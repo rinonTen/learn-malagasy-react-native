@@ -9,6 +9,8 @@ export default function MyComponent({text, number}) {
     <SafeAreaView >
       <Text>{text}</Text>
       <Text>{number}</Text> 
+      <Text>{text}</Text>
+      <Text>{number}</Text> 
     </SafeAreaView>
   );
 }
