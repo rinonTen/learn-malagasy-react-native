@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SafeAreaView, Button, StyleSheet, TouchableOpacity, Text} from 'react-native';
+import { StyleSheet, SafeAreaView, TouchableOpacity, Text} from 'react-native';
 
 const styles = StyleSheet.create({
   button: { 
