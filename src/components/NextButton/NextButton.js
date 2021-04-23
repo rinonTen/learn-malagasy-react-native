@@ -24,12 +24,7 @@ const styles = StyleSheet.create({
   },
   disabledButtonText: {
      color: "#06B6D4",
-  },
-  longTextButton: { 
-    maxWidth: 100,
-    paddingLeft: 10,
-    paddingRight: 10,
-  }
+  }, 
 })
  
 export default function NextButton({
@@ -37,7 +32,7 @@ export default function NextButton({
   isDisabled, 
   onPress = () => null,
 }) {
-
+// Conditions for the styling the button when it is disabled or not
   const buttonStyles = !isDisabled ? [styles.button, styles.enabledButton]: [styles.button, styles.disabledButton];
   const textStyles = !isDisabled ? [styles.buttonText, styles.enabledButtonText]: [styles.buttonText, styles.disabledButtonText];
   
