@@ -1,54 +1,45 @@
-import React, { useState } from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import * as React from 'react';
+import { TextInput, SafeAreaView, StyleSheet } from 'react-native';
 
- const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'flex-start',
+    height: 100,
+    marginVertical: 0,
+    marginHorizontal: 'auto',
+    backgroundColor: '#fff',
+    justifyContent: 'center',
     alignItems: 'center',
+    borderStyle: 'solid',
+    borderColor: '#E5E5E5',
+    borderWidth: 1,
   },
   input: {
-    fontFamily: "Inter",
-    fontStyle: "normal",
-    fontWeight: "normal",
+    color: '#111827',
+  },
+  textarea: {
+    color: '#111827',
+    maxWidth: 360,
+    marginHorizontal: 'auto',
     fontSize: 20,
-    lineHeight: 24,
-    textAlign: "center",
-    color: "rgba(17, 24, 39, 0.5)",
-    backgroundColor: "#FFFFFF",
-    borderColor: "#E5E5E5", 
-    borderWidth: 1, 
-    margin: 16,
-    paddingTop: 41,
-    paddingBottom: 34,
-  }
+    lineHeight: 24.3,
+  },
 });
 
-export default function Example({
-    placeholder, 
-    containerStyle,
-    inputStyle,
-    editable,
-    onChangeText= () => {},
-    value,
-    numberOfLines,
-    multiline,
-    placeholderTextColor
-}) { 
- 
+export default function PhraseTextarea({
+  phrase,
+  editable,
+  onChange = () => null,
+}) {
   return (
-      <View style={styles.container}> 
-         <TextInput 
-         style={styles.input}
-            numberOfLines={numberOfLines}
-            multiline={multiline}
-            style={inputStyle}  
-            placeholder={placeholder} 
-            placeholderTextColor={placeholderTextColor}
-            editable={editable}
-            onChangeText={(text ) => onChangeText(text)}
-            value={value}
-          />
-    </View>
-  )
+    <SafeAreaView style={styles.container}>
+      <TextInput
+        style={editable ? styles.input : styles.textarea}
+        value={phrase}
+        editable={editable}
+        onChangeText={onChange}
+        multiline={true}
+        placeholder={'Enter text'}
+      />
+    </SafeAreaView>
+  );
 }
