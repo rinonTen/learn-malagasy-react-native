@@ -7,22 +7,51 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import CorrectAnswerIcon from './icons/correctAnswerIcon.svg';
+import WrongAnswerIcon from './icons/wrongAnswerIcon.svg';
+import RightArrowIcon from './icons/rightArrowIcon.svg';
 
-export default function ActionButton({title, onPress= () => {}}) {
+const styles = StyleSheet.create({
+  button: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  text: {
+    marginTop: -3,
+    marginRight: 10,
+  },
+  blueText: { 
+    color: "#06B6D4", 
+  },
+  greenText: {
+    color: "#06D440", 
+  },
+  redText: {
+    color: "#D4068E"
+  }
+})
+export default function ActionButton({title, onPress= () => {}, isCorrect, isDisabled}) {
+ let buttonIcon;
+ let textStyles;
+
+  if(isCorrect) {
+   buttonIcon = <CorrectAnswerIcon /> 
+   textStyles = [styles.greenText, styles.text]
+ } else if(!isCorrect && isDisabled) {
+   buttonIcon = <WrongAnswerIcon />
+   textStyles = [styles.redText, styles.text ] 
+ } else {
+   buttonIcon = <RightArrowIcon />
+   textStyles = [styles.blueText, styles.text]
+ } 
+ 
   return (
-    <SafeAreaView style={{flex: 1}}> 
-        <TouchableOpacity
-        onPress={onPress}
-        >
-            <Text>
+    <SafeAreaView > 
+        <TouchableOpacity onPress={onPress} disabled={isDisabled} style={styles.button} isCorrect={isCorrect}>
+            <Text style={textStyles}>
                 {title}
             </Text>
-            <Image
-                source={{
-                uri:
-                    'https://raw.githubusercontent.com/AboutReact/sampleresource/master/facebook.png',
-                }}
-            /> 
+            {buttonIcon}
         </TouchableOpacity>
     </SafeAreaView>
   )}
