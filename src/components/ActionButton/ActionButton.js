@@ -1,10 +1,8 @@
 import React from 'react'; 
 import {
   SafeAreaView,
-  StyleSheet,
-  View,
-  Text,
-  Image,
+  StyleSheet, 
+  Text, 
   TouchableOpacity,
 } from 'react-native';
 import CorrectAnswerIcon from './icons/correctAnswerIcon.svg';
