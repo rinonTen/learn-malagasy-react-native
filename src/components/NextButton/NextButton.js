@@ -1,5 +1,9 @@
 import * as React from 'react';
+<<<<<<< HEAD
 import { StyleSheet, SafeAreaView, TouchableOpacity, Text} from 'react-native';
+=======
+import { SafeAreaView, Button, StyleSheet, TouchableOpacity, Text} from 'react-native';
+>>>>>>> Adding next button component with its story
 
 const styles = StyleSheet.create({
   button: { 
@@ -24,7 +28,16 @@ const styles = StyleSheet.create({
   },
   disabledButtonText: {
      color: "#06B6D4",
+<<<<<<< HEAD
   }, 
+=======
+  },
+  longTextButton: { 
+    maxWidth: 100,
+    paddingLeft: 10,
+    paddingRight: 10,
+  }
+>>>>>>> Adding next button component with its story
 })
  
 export default function NextButton({
@@ -32,7 +45,11 @@ export default function NextButton({
   isDisabled, 
   onPress = () => null,
 }) {
+<<<<<<< HEAD
 // Conditions for the styling the button when it is disabled or not
+=======
+
+>>>>>>> Adding next button component with its story
   const buttonStyles = !isDisabled ? [styles.button, styles.enabledButton]: [styles.button, styles.disabledButton];
   const textStyles = !isDisabled ? [styles.buttonText, styles.enabledButtonText]: [styles.buttonText, styles.disabledButtonText];
   
