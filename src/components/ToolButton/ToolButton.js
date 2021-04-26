@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, SafeAreaView, TouchableOpacity, Text} from 'react-native';
+import { StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import ArrowLeftIcon from './icons/arrowLeft.svg';
 import DoubleTickedIcon from './icons/doubleTicked.svg';
 import PlusIcon from './icons/plusIcon.svg';
