@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     lineHeight: 22,
+    fontWeight: "600",
     color: "#111827"
   }
 })
