@@ -5,7 +5,10 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     lineHeight: 22,
+<<<<<<< HEAD
     fontWeight: "600",
+=======
+>>>>>>> Building a component and a storybook for the section heading
     color: "#111827"
   }
 })
