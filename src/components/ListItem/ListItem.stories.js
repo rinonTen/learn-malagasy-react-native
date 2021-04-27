@@ -5,7 +5,15 @@ import ListItem from './ListItem';
 
 storiesOf('ListItem', module)
   .addDecorator(story => <View style={{padding: 23}}>{story()}</View>)
-  .add('ListItem', () => <ListItem text="Seen phrases:" />)
+  .add('ListItem', () => (
+    <ListItem
+      categoryName="At the restaurant"
+      onPress={() => alert('Learn about it!')}
+    />
+  ))
   .add('ListItemWIthLongCategoryName', () => (
-    <SectionHeading text="Select a category from the category list:" />
+    <ListItem
+      categoryName="An unncessessarly loooong cat..."
+      onPress={() => alert('Learn about it!')}
+    />
   ));
