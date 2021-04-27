@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     color: '#111827',
   },
   buttonContainer: {
-    marginTop: 2,
+    marginTop: 3,
   },
 });
 
