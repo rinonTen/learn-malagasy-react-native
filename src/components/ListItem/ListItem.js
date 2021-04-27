@@ -7,6 +7,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingTop: 17,
+    paddingBottom: 17,
+    paddingLeft: 16,
+    paddingRight: 16,
   },
   text: {
     fontSize: 16,
@@ -14,7 +18,7 @@ const styles = StyleSheet.create({
     color: '#111827',
   },
   buttonContainer: {
-    marginTop: 3,
+    marginTop: 2,
   },
 });
 
