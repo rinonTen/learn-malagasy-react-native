@@ -15,6 +15,7 @@ function CategoryListComponent() {
     />
   );
 }
+
 storiesOf('List', module)
   .addDecorator(story => <View style={{padding: 23}}>{story()}</View>)
   .add('List', () => <CategoryListComponent />);
