@@ -13,7 +13,7 @@ storiesOf('ListItem', module)
   ))
   .add('ListItemWIthLongCategoryName', () => (
     <ListItem
-      categoryName="An unncessessarly loooong cat..."
+      categoryName="An unncessessarly loooong cat went to the marget to buy some medecine and cake"
       onPress={() => alert('Learn about it!')}
     />
   ));
