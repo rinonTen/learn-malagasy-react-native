@@ -34,7 +34,7 @@ export default function ToolButton({icon, onPress = () => null}) {
   } else if (icon === 'tickedIcon') {
     buttonIcon = <TickedIcon style={styles.icon} />;
   } else if (icon === 'settingIcon') {
-    buttonIcon = <SettingIcon />;
+    buttonIcon = <SettingIcon style={{marginTop: -1}} />;
   }
 
   return (
