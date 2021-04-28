@@ -1,5 +1,11 @@
-import {SectionList} from 'react-native';
-import {View, SafeAreaView, FlatList} from 'react-native';
+import * as React from 'react';
+import {
+  StyleSheet,
+  View,
+  SafeAreaView,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native';
 import ListItem from '../ListItem/ListItem';
 import SectionHeading from '../SectionHeading/SectionHeading';
 const styles = StyleSheet.create({
@@ -17,18 +23,22 @@ export default function ListItemComponent({
   heading,
   onPress = () => {},
   isEnglishLanguage,
+  data,
 }) {
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView>
       <SectionHeading text={heading} />
       <FlatList
         style={[styles.defaultStyles, styles.container]}
         data={data}
+        onPress={onPress}
         renderItem={({item}) => (
-          <ListItem
-            categoryName={isEnglishLanguage ? item.name.en : item.name.mg}
-            onPress={onPress}
-          />
+          <TouchableOpacity onPress={onPress}>
+            <ListItem
+              categoryName={isEnglishLanguage ? item.name.en : item.name.mg}
+              // onPress={onPress}
+            />
+          </TouchableOpacity>
         )}
         keyExtractor={item => item.id}
         ItemSeparatorComponent={() => <FlatListItemSeparator />}
