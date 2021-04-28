@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {StyleSheet, SafeAreaView, TouchableOpacity, Text} from 'react-native';
-import LanguageSwitcherIcon from './icons/languageSwitcherIcon.svg';
+import LanguageSwitcherIcon from '../../assets/icons/languageSwitcherIcon.svg';
 
 const styles = StyleSheet.create({
   button: {
