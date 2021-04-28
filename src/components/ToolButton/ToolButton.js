@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {StyleSheet, SafeAreaView, TouchableOpacity} from 'react-native';
-import ArrowLeftIcon from './icons/arrowLeft.svg';
-import DoubleTickedIcon from './icons/doubleTicked.svg';
-import PlusIcon from './icons/plusIcon.svg';
-import SettingIcon from './icons/settingIcon.svg';
-import TickedIcon from './icons/tickedIcon.svg';
+import ArrowLeftIcon from '../../assets/icons/arrowLeft.svg';
+import DoubleTickedIcon from '../../assets/icons/doubleTicked.svg';
+import PlusIcon from '../../assets/icons/plusIcon.svg';
+import SettingIcon from '../../assets/icons/settingIcon.svg';
+import TickedIcon from '../../assets/icons/tickedIcon.svg';
 
 const styles = StyleSheet.create({
   button: {
