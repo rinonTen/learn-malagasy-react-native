@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     paddingRight: 16,
   },
   text: {
+    maxWidth: 249,
     fontSize: 16,
     lineHeight: 19,
     color: '#111827',
