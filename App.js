@@ -8,9 +8,8 @@
 
 import React from 'react';
 import type {Node} from 'react';
-import {SafeAreaView, useColorScheme} from 'react-native';
+import {SafeAreaView} from 'react-native';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Home from './src/screens/Home';
 
 const App: () => Node = () => {
