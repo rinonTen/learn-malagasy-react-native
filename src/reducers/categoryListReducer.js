@@ -1,11 +1,15 @@
 import {CATEGORY_LIST} from '../constants';
 
-const categoryListReducer = (state = [], action) => {
+const categoryList = (state = {}, action) => {
   switch (action.type) {
     case CATEGORY_LIST:
-      return action.payload;
+      return {
+        ...state,
+        categoryList: action.payload,
+        isLoading: !action.isLoading,
+      };
     default:
       return state;
   }
 };
-export default categoryListReducer;
+export default categoryList;
