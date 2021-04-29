@@ -28,20 +28,24 @@ export default function ListItemComponent({
     <SafeAreaView>
       <SectionHeading text={heading} />
       <View style={{backgroundColor: '#ffffff'}}>
-        <FlatList
-          style={[styles.container, styles.commonStyles]}
-          data={data}
-          renderItem={({item}) => (
-            <TouchableOpacity onPress={onPress}>
-              <ListItem
-                categoryName={isEnglishLanguage ? item.name.en : item.name.mg}
-                onPress={onPress}
-              />
-            </TouchableOpacity>
-          )}
-          keyExtractor={item => item.id}
-          ItemSeparatorComponent={() => <FlatListItemSeparator />}
-        />
+        <View style={[styles.container, styles.commonStyles]}>
+          {data &&
+            data.map(item => {
+              return (
+                <React.Fragment>
+                  <TouchableOpacity onPress={onPress} key={item.id}>
+                    <ListItem
+                      categoryName={
+                        isEnglishLanguage ? item.name.en : item.name.mg
+                      }
+                      onPress={onPress}
+                    />
+                  </TouchableOpacity>
+                  <FlatListItemSeparator />
+                </React.Fragment>
+              );
+            })}
+        </View>
       </View>
     </SafeAreaView>
   );
