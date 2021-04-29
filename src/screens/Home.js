@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {SafeAreaView, Text} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {getCategoryList} from '../actions';
+import HomeHeader from './HomeHeader';
 import List from '../components/List/List';
 
 export default () => {
@@ -16,6 +17,9 @@ export default () => {
 
   return (
     <SafeAreaView>
+      <HomeHeader
+        switchLanguage={() => setIsEnglishLanguage(!isEnglishLanguage)}
+      />
       <List
         isEnglishLanguage={isEnglishLanguage}
         onPress={() => alert('Learn phrases about in this category')}
