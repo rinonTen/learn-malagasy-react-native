@@ -32,8 +32,8 @@ export default function ListItemComponent({
           {data &&
             data.map(item => {
               return (
-                <React.Fragment>
-                  <TouchableOpacity onPress={onPress} key={item.id}>
+                <React.Fragment key={item.id}>
+                  <TouchableOpacity onPress={onPress}>
                     <ListItem
                       categoryName={
                         isEnglishLanguage ? item.name.en : item.name.mg
