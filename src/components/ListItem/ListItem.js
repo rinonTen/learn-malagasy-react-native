@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 19,
     color: '#111827',
+    maxWidth: 249,
   },
   buttonContainer: {
     marginTop: 2,
