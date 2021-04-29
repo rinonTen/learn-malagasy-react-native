@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {TouchableOpacity} from 'react-native';
 import {
   SafeAreaView,
   KeyboardAvoidingView,
@@ -36,12 +37,13 @@ export default function ListItemComponent({
         <FlatList
           style={[styles.container, styles.commonStyles]}
           data={data}
-          onPress={onPress}
           renderItem={({item}) => (
-            <ListItem
-              categoryName={isEnglishLanguage ? item.name.en : item.name.mg}
-              onPress={onPress}
-            />
+            <TouchableOpacity onPress={onPress}>
+              <ListItem
+                categoryName={isEnglishLanguage ? item.name.en : item.name.mg}
+                onPress={onPress}
+              />
+            </TouchableOpacity>
           )}
           keyExtractor={item => item.id}
           ItemSeparatorComponent={() => <FlatListItemSeparator />}
