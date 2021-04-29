@@ -25,11 +25,11 @@ const styles = StyleSheet.create({
 
 export default function ListItemComponent({categoryName, onPress = () => {}}) {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.text}>{categoryName}</Text>
       <View style={styles.buttonContainer}>
         <ActionButton isDisabled={false} onPress={onPress} title="Learn" />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }

@@ -1,21 +1,12 @@
 import * as React from 'react';
 import {TouchableOpacity} from 'react-native';
-import {SafeAreaView, StyleSheet, FlatList, View} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import ListItem from '../ListItem/ListItem';
 import SectionHeading from '../SectionHeading/SectionHeading';
-
-const styles = StyleSheet.create({
-  commonStyles: {
-    borderBottomColor: '#E5E5E5',
-    borderWidth: 1,
-  },
-  container: {
-    borderRadius: 3,
-  },
-});
+import GlobalStyles from '../../constants/GlobalStyles';
 
 const FlatListItemSeparator = () => {
-  return <View style={styles.commonStyles} />;
+  return <View style={GlobalStyles.listBorder} />;
 };
 
 export default function ListItemComponent({
@@ -28,7 +19,7 @@ export default function ListItemComponent({
     <SafeAreaView>
       <SectionHeading text={heading} />
       <View style={{backgroundColor: '#ffffff'}}>
-        <View style={[styles.container, styles.commonStyles]}>
+        <View style={[GlobalStyles.listContainer, GlobalStyles.listBorder]}>
           {data &&
             data.map(item => {
               return (

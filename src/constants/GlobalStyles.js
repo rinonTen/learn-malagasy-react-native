@@ -8,4 +8,11 @@ export default StyleSheet.create({
     marginLeft: 23,
     marginRight: 23,
   },
+  listBorder: {
+    borderBottomColor: '#E5E5E5',
+    borderWidth: 1,
+  },
+  listContainer: {
+    borderRadius: 3,
+  },
 });
