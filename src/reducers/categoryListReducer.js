@@ -1,6 +1,6 @@
 import {CATEGORY_LIST} from '../constants';
 
-const categoryList = (state = {}, action) => {
+export const categoryList = (state = {}, action) => {
   switch (action.type) {
     case CATEGORY_LIST:
       return {
@@ -12,4 +12,3 @@ const categoryList = (state = {}, action) => {
       return state;
   }
 };
-export default categoryList;

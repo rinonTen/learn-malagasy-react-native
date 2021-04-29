@@ -1,4 +1,4 @@
-import {CATEGORY_LIST} from '../constants';
+import {CATEGORY_LIST, SEEN_PRASES, LEARNT_PHRASES} from '../constants';
 import categoryList from '../data/categories.json';
 
 function getCategoryList() {
@@ -11,4 +11,18 @@ function getCategoryList() {
   };
 }
 
-export {getCategoryList};
+function setSeenPrases(phrases) {
+  return {
+    type: SEEN_PRASES,
+    payload: phrases,
+  };
+}
+
+function setLearntPrases(phrases) {
+  return {
+    type: LEARNT_PHRASES,
+    payload: prases,
+  };
+}
+
+export {getCategoryList, setSeenPrases, setLearntPrases};

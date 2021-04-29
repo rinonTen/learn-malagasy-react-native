@@ -1,1 +1,3 @@
 export const CATEGORY_LIST = 'CATEGORY_LIST';
+export const SEEN_PRASES = 'SEEN_PRASES';
+export const LEARNT_PHRASES = 'LEARNT_PHRASES';
