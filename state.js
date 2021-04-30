@@ -1,5 +1,6 @@
 export default {
-  categoryList: [],
+  categoryList: {},
+  phrases: {},
   seenPhrases: [],
   learntPhrases: [],
 };
