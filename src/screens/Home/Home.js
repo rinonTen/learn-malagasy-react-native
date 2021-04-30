@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default () => {
+export default ({navigation}) => {
   const [isEnglishLanguage, setIsEnglishLanguage] = useState(true);
   const dispatch = useDispatch();
   const categoryListState = useSelector(state => state.categoryList);
@@ -40,7 +40,7 @@ export default () => {
     dispatch(getCategoryList());
   }, []);
 
-  const PhrasesComponent = ({pharasesArr, onPress = () => {}}) => {
+  const PhrasesComponent = ({pharasesArr}) => {
     return (
       <TouchableOpacity style={styles.phraseListItem}>
         <ListItem
@@ -49,7 +49,7 @@ export default () => {
               ? `${pharasesArr.length} seen phrases`
               : `teny sy fehezanteny ${pharasesArr.length}`
           }
-          onPress={onPress}
+          onPress={() => navigation.navigate('LearningScreen')}
         />
       </TouchableOpacity>
     );

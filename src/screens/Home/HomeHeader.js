@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import ToolButton from '../components/ToolButton/ToolButton';
-import LanguageSwitcherButton from '../components/LanguageSwitcherButton/LanguageSwitcherButton';
+import ToolButton from '../../components/ToolButton/ToolButton';
+import LanguageSwitcherButton from '../../components/LanguageSwitcherButton/LanguageSwitcherButton';
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
