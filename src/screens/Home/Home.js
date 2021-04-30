@@ -8,12 +8,12 @@ import {
 } from 'react-native';
 
 import {useSelector, useDispatch} from 'react-redux';
-import {getCategoryList} from '../actions';
+import {getCategoryList} from '../../actions';
 import HomeHeader from './HomeHeader';
-import List from '../components/List/List';
-import SectionHeading from '../components/SectionHeading/SectionHeading';
-import ListItem from '../components/ListItem/ListItem';
-import GlobalStyles from '../constants/GlobalStyles';
+import List from '../../components/List/List';
+import SectionHeading from '../../components/SectionHeading/SectionHeading';
+import ListItem from '../../components/ListItem/ListItem';
+import GlobalStyles from '../../constants/GlobalStyles';
 
 const styles = StyleSheet.create({
   phraseListItem: {
