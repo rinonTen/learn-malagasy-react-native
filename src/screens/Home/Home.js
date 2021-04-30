@@ -64,7 +64,7 @@ export default ({navigation}) => {
           />
           <List
             isEnglishLanguage={isEnglishLanguage}
-            onPress={() => alert('Learn phrases about in this category')}
+            onPress={() => navigation.navigate('LearningScreen')}
             data={categoryList && !isLoading && categoryList.categories}
             heading={
               isEnglishLanguage ? 'Category List' : 'Lisitry ny sokajy misy'
