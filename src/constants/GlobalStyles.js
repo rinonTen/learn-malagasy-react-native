@@ -9,8 +9,9 @@ export default StyleSheet.create({
     marginRight: 23,
   },
   listBorder: {
-    borderBottomColor: '#E5E5E5',
+    borderColor: '#E5E5E5',
     borderWidth: 1,
+    borderStyle: 'solid',
   },
   listContainer: {
     borderRadius: 3,

@@ -5,7 +5,8 @@ export const phrases = (state = {}, action) => {
     case SET_PHRASES:
       return {
         ...state,
-        categoryList: action.payload,
+        phrases: action.payload,
+        learningPhrases: action.learningPhrases,
         isLoading: !action.isLoading,
       };
     default:

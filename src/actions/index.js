@@ -1,28 +1,30 @@
 import {
   CATEGORY_LIST,
+  SET_CATEGORYLIST_ID,
   SET_PHRASES,
   SEEN_PRASES,
   LEARNT_PHRASES,
 } from '../constants';
-import categoryList from '../data/categories.json';
-import Phrases from '../data/phrases.json';
+import CategoryListData from '../data/categories.json';
+import PhrasesData from '../data/phrases.json';
 
 function getCategoryList() {
   return async dispatch => {
     dispatch({
       type: CATEGORY_LIST,
-      payload: categoryList,
+      payload: CategoryListData,
       isLoading: true,
     });
   };
 }
 
-function setPrases() {
+function setPrases(phrases) {
   return async dispatch => {
     dispatch({
       type: SET_PHRASES,
-      payload: Phrases,
+      payload: PhrasesData.phrases,
       isLoading: true,
+      learningPhrases: phrases,
     });
   };
 }
@@ -34,11 +36,11 @@ function setSeenPrases(phrases) {
   };
 }
 
-function setLearntPrases(phrases) {
+function setCategoryId(idFromCategory) {
   return {
-    type: LEARNT_PHRASES,
-    payload: prases,
+    type: SET_CATEGORYLIST_ID,
+    payload: idFromCategory,
   };
 }
 
-export {getCategoryList, setSeenPrases, setLearntPrases, setPrases};
+export {getCategoryList, setSeenPrases, setPrases, setCategoryId};

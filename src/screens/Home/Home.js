@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -7,13 +7,12 @@ import {
   View,
 } from 'react-native';
 
-import {useSelector, useDispatch} from 'react-redux';
-import {getCategoryList} from '../../actions';
 import HomeHeader from './HomeHeader';
 import List from '../../components/List/List';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import ListItem from '../../components/ListItem/ListItem';
 import GlobalStyles from '../../constants/GlobalStyles';
+import {useContext} from '../../context/globalContext';
 
 const styles = StyleSheet.create({
   phraseListItem: {
@@ -29,16 +28,15 @@ const styles = StyleSheet.create({
 });
 
 export default ({navigation}) => {
-  const [isEnglishLanguage, setIsEnglishLanguage] = useState(true);
-  const dispatch = useDispatch();
-  const categoryListState = useSelector(state => state.categoryList);
-  const seenPhrases = useSelector(state => state.seenPhrases);
-  const learntPhrases = useSelector(state => state.learntPhrases);
-  const {categoryList, isLoading} = categoryListState;
-
-  useEffect(() => {
-    dispatch(getCategoryList());
-  }, []);
+  const {
+    isEnglishLanguage,
+    setIsEnglishLanguage,
+    categoryList,
+    isLoading,
+    seenPhrases,
+    learntPhrases,
+    categoryToDisplayId,
+  } = useContext();
 
   const PhrasesComponent = ({pharasesArr}) => {
     return (
@@ -63,8 +61,11 @@ export default ({navigation}) => {
             switchLanguage={() => setIsEnglishLanguage(!isEnglishLanguage)}
           />
           <List
+            navigation={navigation.navigate('LearningScreen')}
             isEnglishLanguage={isEnglishLanguage}
-            onPress={() => navigation.navigate('LearningScreen')}
+            onPress={() => {
+              navigation.navigate('LearningScreen');
+            }}
             data={categoryList && !isLoading && categoryList.categories}
             heading={
               isEnglishLanguage ? 'Category List' : 'Lisitry ny sokajy misy'
