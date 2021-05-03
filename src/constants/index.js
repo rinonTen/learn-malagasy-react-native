@@ -2,3 +2,4 @@ export const CATEGORY_LIST = 'CATEGORY_LIST';
 export const SET_PHRASES = 'SET_PHRASES';
 export const SEEN_PRASES = 'SEEN_PRASES';
 export const LEARNT_PHRASES = 'LEARNT_PHRASES';
+export const SET_CATEGORYLIST_ID = 'SET_CATEGORYLIST_ID';
