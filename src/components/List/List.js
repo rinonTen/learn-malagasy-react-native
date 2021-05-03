@@ -1,24 +1,20 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {SafeAreaView, View} from 'react-native';
 import ListItem from '../ListItem/ListItem';
 import SectionHeading from '../SectionHeading/SectionHeading';
 import GlobalStyles from '../../constants/GlobalStyles';
-import {useContext} from '../../context/globalContext';
 
-const FlatListItemSeparator = () => {
+export const FlatListItemSeparator = () => {
   return <View style={GlobalStyles.listBorder} />;
 };
 
 export default function ListItemComponent({
-  navigation,
   onPress = () => {},
   data,
   isEnglishLanguage,
   heading,
 }) {
-  const {setCategoryToDisplayId} = useContext();
-
   return (
     <SafeAreaView>
       <SectionHeading text={heading} />
@@ -28,11 +24,7 @@ export default function ListItemComponent({
             data.map(item => {
               return (
                 <React.Fragment key={item?.id}>
-                  <TouchableOpacity
-                    onPress={() => {
-                      setCategoryToDisplayId(item?.id);
-                      onPress(navigation);
-                    }}>
+                  <TouchableOpacity onPress={onPress}>
                     <ListItem
                       categoryName={
                         isEnglishLanguage ? item?.name.en : item?.name.mg
