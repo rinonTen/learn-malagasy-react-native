@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -8,11 +8,13 @@ import {
 } from 'react-native';
 
 import HomeHeader from './HomeHeader';
-import List from '../../components/List/List';
+import {FlatListItemSeparator} from '../../components/List/List';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import ListItem from '../../components/ListItem/ListItem';
 import GlobalStyles from '../../constants/GlobalStyles';
 import {useContext} from '../../context/globalContext';
+import {useSelector, useDispatch} from 'react-redux';
+import {setCategoryId} from '../../actions';
 
 const styles = StyleSheet.create({
   phraseListItem: {
@@ -32,11 +34,15 @@ export default ({navigation}) => {
     isEnglishLanguage,
     setIsEnglishLanguage,
     categoryList,
-    isLoading,
     seenPhrases,
     learntPhrases,
-    categoryToDisplayId,
   } = useContext();
+  const dispatch = useDispatch();
+
+  function handleListOnPress(listId) {
+    dispatch(setCategoryId(listId));
+    navigation.navigate('LearningScreen');
+  }
 
   const PhrasesComponent = ({pharasesArr}) => {
     return (
@@ -60,17 +66,28 @@ export default ({navigation}) => {
           <HomeHeader
             switchLanguage={() => setIsEnglishLanguage(!isEnglishLanguage)}
           />
-          <List
-            navigation={navigation.navigate('LearningScreen')}
-            isEnglishLanguage={isEnglishLanguage}
-            onPress={() => {
-              navigation.navigate('LearningScreen');
-            }}
-            data={categoryList && !isLoading && categoryList.categories}
-            heading={
-              isEnglishLanguage ? 'Category List' : 'Lisitry ny sokajy misy'
-            }
-          />
+          <SectionHeading text={'Select a category:'} />
+          <View style={{backgroundColor: '#ffffff'}}>
+            <View style={[GlobalStyles.listContainer, GlobalStyles.listBorder]}>
+              {categoryList &&
+                categoryList?.categories.map(item => {
+                  return (
+                    <React.Fragment key={item?.id}>
+                      <TouchableOpacity
+                        onPress={() => handleListOnPress(item?.id)}>
+                        <ListItem
+                          categoryName={
+                            isEnglishLanguage ? item?.name.en : item?.name.mg
+                          }
+                          onPress={() => handleListOnPress(item?.id)}
+                        />
+                      </TouchableOpacity>
+                      <FlatListItemSeparator />
+                    </React.Fragment>
+                  );
+                })}
+            </View>
+          </View>
           {seenPhrases.length >= 1 && (
             <View style={styles.sectionContainer}>
               <SectionHeading
