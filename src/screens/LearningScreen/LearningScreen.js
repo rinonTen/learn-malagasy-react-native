@@ -9,6 +9,7 @@ import GlobalStyles from '../../constants/GlobalStyles';
 
 export default () => {
   const {randomPhraseAnswersArray, categoryName} = useContext();
+
   const [
     phraseObjToDisplayInTextarea,
     setphraseObjToDisplayInTextarea,
@@ -46,6 +47,7 @@ export default () => {
               onPress={() => {}}
               data={randomPhraseAnswersArray}
               heading={'Pick a solution'}
+              text="Pick"
             />
           )}
         </View>
