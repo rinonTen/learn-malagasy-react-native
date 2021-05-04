@@ -13,7 +13,7 @@ import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import ListItem from '../../components/ListItem/ListItem';
 import GlobalStyles from '../../constants/GlobalStyles';
 import {useContext} from '../../context/globalContext';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {setCategoryId} from '../../actions';
 
 const styles = StyleSheet.create({
@@ -38,7 +38,7 @@ export default ({navigation}) => {
     learntPhrases,
   } = useContext();
   const dispatch = useDispatch();
-
+  // Setting the category id
   function handleListOnPress(listId) {
     dispatch(setCategoryId(listId));
     navigation.navigate('LearningScreen');
@@ -54,6 +54,7 @@ export default ({navigation}) => {
               : `teny sy fehezanteny ${pharasesArr.length}`
           }
           onPress={() => navigation.navigate('LearningScreen')}
+          text="Learn"
         />
       </TouchableOpacity>
     );
@@ -80,6 +81,7 @@ export default ({navigation}) => {
                             isEnglishLanguage ? item?.name.en : item?.name.mg
                           }
                           onPress={() => handleListOnPress(item?.id)}
+                          text="Learn"
                         />
                       </TouchableOpacity>
                       <FlatListItemSeparator />
