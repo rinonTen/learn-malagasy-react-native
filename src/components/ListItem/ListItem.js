@@ -24,12 +24,22 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ListItemComponent({categoryName, onPress = () => {}}) {
+export default function ListItemComponent({
+  categoryName,
+  onPress = () => {},
+  text,
+  isCorrect,
+}) {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>{categoryName}</Text>
       <View style={styles.buttonContainer}>
-        <ActionButton isDisabled={false} onPress={onPress} title="Learn" />
+        <ActionButton
+          isCorrect={isCorrect}
+          isDisabled={false}
+          onPress={onPress}
+          title={text}
+        />
       </View>
     </SafeAreaView>
   );

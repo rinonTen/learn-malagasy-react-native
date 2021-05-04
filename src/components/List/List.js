@@ -14,6 +14,8 @@ export default function ListItemComponent({
   data,
   isEnglishLanguage,
   heading,
+  text,
+  isCorrect,
 }) {
   return (
     <SafeAreaView>
@@ -26,9 +28,11 @@ export default function ListItemComponent({
                 <React.Fragment key={item?.id}>
                   <TouchableOpacity onPress={onPress}>
                     <ListItem
+                      text={text}
                       categoryName={
                         isEnglishLanguage ? item?.name.en : item?.name.mg
                       }
+                      isCorrect={isCorrect}
                       onPress={onPress}
                     />
                   </TouchableOpacity>
