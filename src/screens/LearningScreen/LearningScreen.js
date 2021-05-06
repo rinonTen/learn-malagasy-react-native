@@ -1,19 +1,35 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, SafeAreaView, View, TouchableOpacity} from 'react-native';
 import {useContext} from '../../context/globalContext';
 import ScreenHeader from './LeariningScreenHeader';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import PhraseTextarea from '../../components/PhraseTextarea/phraseTextarea';
 import ListItem from '../../components/ListItem/ListItem';
 import GlobalStyles from '../../constants/GlobalStyles';
+import NextButton from '../../components/NextButton/NextButton';
+
+const style = StyleSheet.create({
+  nextButtonContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    width: 365,
+    paddingTop: 60,
+  },
+});
 
 export default () => {
-  const {randomPhraseAnswersArray, categoryName} = useContext();
+  const {
+    randomPhraseAnswersArray,
+    categoryName,
+    phrases,
+    setPhrasesToDisplayInLearningScreen,
+  } = useContext();
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
   const [isAnswerIncorrect, setIsAnswerIncorrect] = useState(false);
-  const [isListItemDisabled, setIsListItemDisabled] = useState(false);
-
   const [itemId, setItemId] = useState('');
+  const [isListItemDisabled, setIsListItemDisabled] = useState(false);
+  const [showNextButton, setShowNextButton] = useState(false);
   const [
     phraseObjToDisplayInTextarea,
     setphraseObjToDisplayInTextarea,
@@ -59,11 +75,19 @@ export default () => {
     setItemId(itemId);
     if (phraseObjToDisplayInTextarea?.id === itemId) {
       setIsAnswerCorrect(true);
+      setShowNextButton(!showNextButton);
     } else {
       setIsAnswerCorrect(true);
       setIsAnswerIncorrect(true);
     }
     setIsListItemDisabled(!isListItemDisabled);
+  }
+
+  function handleNextButton() {
+    setIsListItemDisabled(!isListItemDisabled);
+    setShowNextButton(!showNextButton);
+    setIsAnswerCorrect(false);
+    setPhrasesToDisplayInLearningScreen(phrases);
   }
 
   return (
@@ -111,6 +135,17 @@ export default () => {
             </View>
           </View>
         </View>
+        {showNextButton && (
+          <View style={style.nextButtonContainer}>
+            <View style={{width: 90}}>
+              <NextButton
+                onPress={() => handleNextButton()}
+                isDisabled={false}
+                title="Next"
+              />
+            </View>
+          </View>
+        )}
       </View>
     </SafeAreaView>
   );
