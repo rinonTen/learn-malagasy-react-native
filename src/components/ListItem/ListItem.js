@@ -11,6 +11,9 @@ const styles = StyleSheet.create({
     paddingBottom: 17,
     paddingLeft: 16,
     paddingRight: 16,
+    borderBottomColor: '#E5E5E5',
+    borderBottomWidth: 1,
+    borderStyle: 'solid',
   },
   text: {
     maxWidth: 249,
@@ -29,13 +32,16 @@ export default function ListItemComponent({
   onPress = () => {},
   text,
   isCorrect,
+  isIncorrect,
+  ref,
 }) {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView ref={ref} style={styles.container}>
       <Text style={styles.text}>{categoryName}</Text>
       <View style={styles.buttonContainer}>
         <ActionButton
           isCorrect={isCorrect}
+          isIncorrect={isIncorrect}
           isDisabled={false}
           onPress={onPress}
           title={text}
