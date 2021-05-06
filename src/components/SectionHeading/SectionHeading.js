@@ -3,6 +3,7 @@ import {StyleSheet, SafeAreaView, Text} from 'react-native';
 
 const styles = StyleSheet.create({
   text: {
+    fontFamily: 'Inter',
     fontSize: 18,
     lineHeight: 22,
     fontWeight: '600',
