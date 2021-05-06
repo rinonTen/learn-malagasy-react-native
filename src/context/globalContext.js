@@ -45,7 +45,7 @@ export const useContext = () => {
     getPhraseForCategory();
   }, [categoryListState]);
 
-  useEffect(() => {
+  function setPhrasesToDisplayInLearningScreen(phrases) {
     // Create an array of the answers from the phrases array and the random ID
     const phrasesArr = getPhrasesArrayFromCategoryList(phrases);
     if (phrasesArr) {
@@ -57,12 +57,18 @@ export const useContext = () => {
       ];
       setRandomPhraseAnswersArray(phrasesArray);
     }
+  }
+
+  useEffect(() => {
+    setPhrasesToDisplayInLearningScreen(phrases);
   }, [phrases]);
 
   return {
     isEnglishLanguage,
     setIsEnglishLanguage,
     categoryList,
+    phrases,
+    setPhrasesToDisplayInLearningScreen,
     seenPhrases,
     learntPhrases,
     randomPhraseAnswersArray,
