@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 
 import HomeHeader from './HomeHeader';
-import {FlatListItemSeparator} from '../../components/List/List';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import ListItem from '../../components/ListItem/ListItem';
 import GlobalStyles from '../../constants/GlobalStyles';
@@ -84,7 +83,6 @@ export default ({navigation}) => {
                           text="Learn"
                         />
                       </TouchableOpacity>
-                      <FlatListItemSeparator />
                     </React.Fragment>
                   );
                 })}
