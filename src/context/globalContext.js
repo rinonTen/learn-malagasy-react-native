@@ -42,20 +42,22 @@ export const useContext = () => {
   }
 
   useEffect(() => {
-    // Create an array of the answers from the phrases array and the random ID
-    const phrasesArr = getPhrasesArrayFromCategoryList(phrases);
-    const phrasesArray = [
-      phrasesArr[1],
-      phrasesArr[2],
-      phrasesArr[3],
-      phrasesArr[4],
-    ];
-    setRandomPhraseAnswersArray(phrasesArray);
-  }, [phrases]);
-
-  useEffect(() => {
     getPhraseForCategory();
   }, [categoryListState]);
+
+  useEffect(() => {
+    // Create an array of the answers from the phrases array and the random ID
+    const phrasesArr = getPhrasesArrayFromCategoryList(phrases);
+    if (phrasesArr) {
+      const phrasesArray = [
+        phrasesArr[1],
+        phrasesArr[2],
+        phrasesArr[3],
+        phrasesArr[4],
+      ];
+      setRandomPhraseAnswersArray(phrasesArray);
+    }
+  }, [phrases]);
 
   return {
     isEnglishLanguage,

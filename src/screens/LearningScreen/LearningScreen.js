@@ -11,6 +11,8 @@ export default () => {
   const {randomPhraseAnswersArray, categoryName} = useContext();
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
   const [isAnswerIncorrect, setIsAnswerIncorrect] = useState(false);
+  const [isListItemDisabled, setIsListItemDisabled] = useState(false);
+
   const [itemId, setItemId] = useState('');
   const [
     phraseObjToDisplayInTextarea,
@@ -61,6 +63,7 @@ export default () => {
       setIsAnswerCorrect(true);
       setIsAnswerIncorrect(true);
     }
+    setIsListItemDisabled(!isListItemDisabled);
   }
 
   return (
@@ -88,7 +91,9 @@ export default () => {
                 updatedPhrasesArrWithIncorrectPhrase.map(item => {
                   return (
                     <React.Fragment key={item?.id}>
-                      <TouchableOpacity onPress={() => chooseAnswers(item?.id)}>
+                      <TouchableOpacity
+                        disabled={isListItemDisabled}
+                        onPress={() => chooseAnswers(item?.id)}>
                         <ListItem
                           categoryName={item?.name.en}
                           onPress={() => chooseAnswers(item?.id)}
