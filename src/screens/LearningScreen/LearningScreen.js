@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, SafeAreaView, View, TouchableOpacity} from 'react-native';
-import {leariningScreenManager} from '../../listManagers/LearningScreenManager';
+import {learningScreenManager} from '../../listManagers/LearningScreen';
 import ScreenHeader from './LeariningScreenHeader';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import PhraseTextarea from '../../components/PhraseTextarea/PhraseTextarea';
@@ -30,7 +30,7 @@ export default () => {
     showNextButton,
     chooseAnswers,
     handleNextButton,
-  } = leariningScreenManager();
+  } = learningScreenManager();
 
   return (
     <SafeAreaView>

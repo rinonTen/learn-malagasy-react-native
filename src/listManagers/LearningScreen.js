@@ -2,8 +2,8 @@ import {useEffect, useState} from 'react';
 import {globalListManager} from './GlobalListManager';
 import {useDispatch} from 'react-redux';
 import {setLearntPrases} from '../actions';
-
-export const leariningScreenManager = () => {
+// Custom hook for learning screen
+export const learningScreenManager = () => {
   const {
     randomPhraseAnswersArray,
     phrases,
