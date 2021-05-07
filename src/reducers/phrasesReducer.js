@@ -6,7 +6,6 @@ export const phrases = (state = {}, action) => {
       return {
         ...state,
         phrases: action.payload,
-        learningPhrases: action.learningPhrases,
         isLoading: !action.isLoading,
       };
     default:

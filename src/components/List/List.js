@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import {SafeAreaView, View} from 'react-native';
 import ListItem from '../ListItem/ListItem';
@@ -22,16 +22,7 @@ export default function ListItemComponent({
             data.map(item => {
               return (
                 <React.Fragment key={item?.id}>
-                  <TouchableOpacity onPress={onPress}>
-                    <ListItem
-                      text={text}
-                      categoryName={
-                        isEnglishLanguage ? item?.name.en : item?.name.mg
-                      }
-                      isCorrect={isCorrect}
-                      onPress={onPress}
-                    />
-                  </TouchableOpacity>
+                  <TouchableOpacity onPress={onPress}></TouchableOpacity>
                 </React.Fragment>
               );
             })}

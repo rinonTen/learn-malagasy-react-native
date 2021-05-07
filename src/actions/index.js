@@ -18,13 +18,12 @@ function getCategoryList() {
   };
 }
 
-function setPrases(phrases) {
+function setPrases() {
   return async dispatch => {
     dispatch({
       type: SET_PHRASES,
       payload: PhrasesData.phrases,
       isLoading: true,
-      learningPhrases: phrases,
     });
   };
 }
