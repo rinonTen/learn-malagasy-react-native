@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {getCategoryList, setPrases} from '../actions';
 import {shufflePhrasesArr} from './Utils';
 
-export const useContext = () => {
+export const globalListManager = () => {
   const [isEnglishLanguage, setIsEnglishLanguage] = useState(true);
   const [categoryToDisplayId, setCategoryToDisplayId] = useState(null);
   const [randomPhraseAnswersArray, setRandomPhraseAnswersArray] = useState([]);

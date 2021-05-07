@@ -4,7 +4,7 @@ import {
   SET_PHRASES,
   SEEN_PRASES,
   LEARNT_PHRASES,
-} from '../constants';
+} from '../constants/ActionVariables';
 import CategoryListData from '../data/categories.json';
 import PhrasesData from '../data/phrases.json';
 

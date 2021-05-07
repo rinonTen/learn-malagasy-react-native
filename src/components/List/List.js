@@ -22,7 +22,16 @@ export default function ListItemComponent({
             data.map(item => {
               return (
                 <React.Fragment key={item?.id}>
-                  <TouchableOpacity onPress={onPress}></TouchableOpacity>
+                  <TouchableOpacity onPress={onPress}>
+                    <ListItem
+                      text={text}
+                      categoryName={
+                        isEnglishLanguage ? item?.name.en : item?.name.mg
+                      }
+                      isCorrect={isCorrect}
+                      onPress={onPress}
+                    />
+                  </TouchableOpacity>
                 </React.Fragment>
               );
             })}

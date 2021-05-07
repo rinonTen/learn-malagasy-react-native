@@ -1,4 +1,4 @@
-import {SET_PHRASES} from '../constants';
+import {SET_PHRASES} from '../constants/ActionVariables';
 
 export const phrases = (state = {}, action) => {
   switch (action.type) {

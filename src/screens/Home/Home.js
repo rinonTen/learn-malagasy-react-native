@@ -11,7 +11,7 @@ import HomeHeader from './HomeHeader';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import ListItem from '../../components/ListItem/ListItem';
 import GlobalStyles from '../../constants/GlobalStyles';
-import {useContext} from '../../ListManagers/GlobalListManager';
+import {globalListManager} from '../../listManagers/GlobalListManager';
 import {useDispatch} from 'react-redux';
 import {setCategoryId} from '../../actions';
 
@@ -35,7 +35,7 @@ export default ({navigation}) => {
     categoryList,
     seenPhrases,
     learntPhrases,
-  } = useContext();
+  } = globalListManager();
   const dispatch = useDispatch();
   // Setting the category id
   function handleListOnPress(listId) {

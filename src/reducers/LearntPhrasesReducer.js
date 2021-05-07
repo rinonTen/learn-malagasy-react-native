@@ -1,4 +1,4 @@
-import {LEARNT_PHRASES} from '../constants';
+import {LEARNT_PHRASES} from '../constants/ActionVariables';
 
 export const learntPhrases = (state = [], action) => {
   switch (action.type) {
