@@ -1,0 +1,94 @@
+import {useEffect, useState} from 'react';
+import {useContext} from './GlobalListManager';
+import {useDispatch} from 'react-redux';
+import {setLearntPrases} from '../actions';
+
+export const leariningScreenManager = () => {
+  const {
+    randomPhraseAnswersArray,
+    phrases,
+    categoryName,
+    setPhrasesToDisplayInLearningScreen,
+  } = useContext();
+
+  const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
+  const [isAnswerIncorrect, setIsAnswerIncorrect] = useState(false);
+  const [itemId, setItemId] = useState('');
+  const [isListItemDisabled, setIsListItemDisabled] = useState(false);
+  const [showNextButton, setShowNextButton] = useState(false);
+  const [
+    phraseObjToDisplayInTextarea,
+    setphraseObjToDisplayInTextarea,
+  ] = useState({});
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Pick one object from the random phrases array to display in textarea
+    const randomPhraseObj =
+      randomPhraseAnswersArray[
+        Math.floor(Math.random() * randomPhraseAnswersArray.length)
+      ];
+    setphraseObjToDisplayInTextarea(randomPhraseObj);
+  }, [randomPhraseAnswersArray]);
+
+  // Adding isIncorrect attribute to each obj in the answers array
+  const newPhrasesArr = randomPhraseAnswersArray.map(phrase => {
+    const newPhrase = {
+      id: phrase.id,
+      name: {
+        en: phrase.name.en,
+        mg: phrase.name.mg,
+      },
+      isIncorrect: false,
+    };
+    return newPhrase;
+  });
+
+  // Find the wrong answer from the array of answers and and 'isIncorrect' attribute
+  const updatedPhrasesArrWithIncorrectPhrase = newPhrasesArr.map(phrase => {
+    if (
+      phrase.id === itemId &&
+      phrase.id !== phraseObjToDisplayInTextarea?.id
+    ) {
+      return {
+        ...phrase,
+        isIncorrect: !phrase.isIncorrect,
+      };
+    }
+    return {...phrase};
+  });
+  // A function that handles choosing an answer and the behaviours of the buttons
+  function chooseAnswers(phrase, itemId) {
+    setItemId(itemId);
+    if (phraseObjToDisplayInTextarea?.id === itemId) {
+      setIsAnswerCorrect(true);
+      setShowNextButton(!showNextButton);
+      // Set the right phrase to the learnt phrases store
+      dispatch(setLearntPrases(phrase));
+    } else {
+      setIsAnswerCorrect(true);
+      setIsAnswerIncorrect(true);
+    }
+    setIsListItemDisabled(!isListItemDisabled);
+  }
+
+  function handleNextButton() {
+    setIsListItemDisabled(!isListItemDisabled);
+    setShowNextButton(!showNextButton);
+    setIsAnswerCorrect(false);
+    setPhrasesToDisplayInLearningScreen(phrases);
+  }
+
+  return {
+    phraseObjToDisplayInTextarea,
+    categoryName,
+    updatedPhrasesArrWithIncorrectPhrase,
+    isListItemDisabled,
+    isAnswerCorrect,
+    isAnswerIncorrect,
+    showNextButton,
+    chooseAnswers,
+    handleNextButton,
+  };
+};
