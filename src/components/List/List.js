@@ -5,10 +5,6 @@ import ListItem from '../ListItem/ListItem';
 import SectionHeading from '../SectionHeading/SectionHeading';
 import GlobalStyles from '../../constants/GlobalStyles';
 
-export const FlatListItemSeparator = () => {
-  return <View style={GlobalStyles.listBorder} />;
-};
-
 export default function ListItemComponent({
   onPress = () => {},
   data,
@@ -36,7 +32,6 @@ export default function ListItemComponent({
                       onPress={onPress}
                     />
                   </TouchableOpacity>
-                  <FlatListItemSeparator />
                 </React.Fragment>
               );
             })}
