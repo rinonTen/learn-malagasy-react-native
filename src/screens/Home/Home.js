@@ -9,6 +9,7 @@ import {
 
 import HomeHeader from './HomeHeader';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
+import List from '../../components/List/List';
 import ListItem from '../../components/ListItem/ListItem';
 import GlobalStyles from '../../constants/GlobalStyles';
 import {globalListManager} from '../../listManagers/GlobalListManager';
@@ -66,28 +67,28 @@ export default ({navigation}) => {
           <HomeHeader
             switchLanguage={() => setIsEnglishLanguage(!isEnglishLanguage)}
           />
-          <SectionHeading text={'Select a category:'} />
-          <View style={{backgroundColor: '#ffffff'}}>
-            <View style={[GlobalStyles.listContainer, GlobalStyles.listBorder]}>
-              {categoryList &&
-                categoryList?.categories.map(item => {
-                  return (
-                    <React.Fragment key={item?.id}>
-                      <TouchableOpacity
-                        onPress={() => handleListOnPress(item?.id)}>
-                        <ListItem
-                          categoryName={
-                            isEnglishLanguage ? item?.name.en : item?.name.mg
-                          }
-                          onPress={() => handleListOnPress(item?.id)}
-                          text="Learn"
-                        />
-                      </TouchableOpacity>
-                    </React.Fragment>
-                  );
-                })}
-            </View>
-          </View>
+          <List
+            heading={
+              isEnglishLanguage ? 'Select a category:' : 'Mifidiana sokajy iray'
+            }>
+            {categoryList &&
+              categoryList?.categories.map(item => {
+                return (
+                  <React.Fragment key={item?.id}>
+                    <TouchableOpacity
+                      onPress={() => handleListOnPress(item?.id)}>
+                      <ListItem
+                        categoryName={
+                          isEnglishLanguage ? item?.name.en : item?.name.mg
+                        }
+                        onPress={() => handleListOnPress(item?.id)}
+                        text="Learn"
+                      />
+                    </TouchableOpacity>
+                  </React.Fragment>
+                );
+              })}
+          </List>
           {seenPhrases.length >= 1 && (
             <View style={styles.sectionContainer}>
               <SectionHeading

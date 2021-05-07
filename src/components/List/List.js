@@ -5,36 +5,13 @@ import ListItem from '../ListItem/ListItem';
 import SectionHeading from '../SectionHeading/SectionHeading';
 import GlobalStyles from '../../constants/GlobalStyles';
 
-export default function ListItemComponent({
-  onPress = () => {},
-  data,
-  isEnglishLanguage,
-  heading,
-  text,
-  isCorrect,
-}) {
+export default function ListItemComponent({heading, children}) {
   return (
     <SafeAreaView>
       <SectionHeading text={heading} />
       <View style={{backgroundColor: '#ffffff'}}>
         <View style={[GlobalStyles.listContainer, GlobalStyles.listBorder]}>
-          {data &&
-            data.map(item => {
-              return (
-                <React.Fragment key={item?.id}>
-                  <TouchableOpacity onPress={onPress}>
-                    <ListItem
-                      text={text}
-                      categoryName={
-                        isEnglishLanguage ? item?.name.en : item?.name.mg
-                      }
-                      isCorrect={isCorrect}
-                      onPress={onPress}
-                    />
-                  </TouchableOpacity>
-                </React.Fragment>
-              );
-            })}
+          {children}
         </View>
       </View>
     </SafeAreaView>
