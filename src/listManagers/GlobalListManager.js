@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {getCategoryList, setPrases} from '../actions';
-import {shufflePhrasesArr} from './Utils';
+import {shufflePhrasesArr} from './UtilsFunctions';
 
 export const globalListManager = () => {
   const [isEnglishLanguage, setIsEnglishLanguage] = useState(true);
