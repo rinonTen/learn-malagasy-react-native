@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {getCategoryList, setPrases} from '../actions';
+import {shufflePhrasesArr} from './utils';
 
 export const useContext = () => {
   const [isEnglishLanguage, setIsEnglishLanguage] = useState(true);
@@ -32,7 +33,8 @@ export const useContext = () => {
   };
 
   function getPhrasesArrayFromCategoryList(phrasesArr) {
-    // FIltering the phrases by the categorylist id but removing the harsh and the numbers in that id
+    // FIltering the phrases by the categorylist id
+    //  but removing the hash and the numbers in that id
     return (
       phrasesArr &&
       phrasesArr.filter(cat =>
@@ -49,11 +51,14 @@ export const useContext = () => {
     // Create an array of the answers from the phrases array and the random ID
     const phrasesArr = getPhrasesArrayFromCategoryList(phrases);
     if (phrasesArr) {
+      // A new phrases arr with its items disordered
+      const shuffledPhrasesArray = shufflePhrasesArr(phrasesArr);
+      // This array is used for data representation in learning screen
       const phrasesArray = [
-        phrasesArr[1],
-        phrasesArr[2],
-        phrasesArr[3],
-        phrasesArr[4],
+        shuffledPhrasesArray[1],
+        shuffledPhrasesArray[2],
+        shuffledPhrasesArray[3],
+        shuffledPhrasesArray[4],
       ];
       setRandomPhraseAnswersArray(phrasesArray);
     }
