@@ -36,6 +36,13 @@ function setSeenPrases(phrases) {
   };
 }
 
+function setLearntPrases(phrases) {
+  return {
+    type: LEARNT_PHRASES,
+    payload: phrases,
+  };
+}
+
 function setCategoryId(idFromCategory) {
   return {
     type: SET_CATEGORYLIST_ID,
@@ -43,4 +50,10 @@ function setCategoryId(idFromCategory) {
   };
 }
 
-export {getCategoryList, setSeenPrases, setPrases, setCategoryId};
+export {
+  getCategoryList,
+  setSeenPrases,
+  setPrases,
+  setCategoryId,
+  setLearntPrases,
+};
