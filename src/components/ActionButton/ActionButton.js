@@ -10,6 +10,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   text: {
+    fontFamily: 'Inter',
+    fontWeight: 'bold',
+    fontSize: 16,
+    lineHeight: 19,
     marginTop: -3,
     marginRight: 10,
   },

@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter',
     fontSize: 18,
     lineHeight: 22,
-    fontWeight: '600',
+    fontWeight: 'bold',
     color: '#111827',
     marginBottom: 15,
   },

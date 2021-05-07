@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     maxWidth: 249,
     fontSize: 16,
     lineHeight: 19,
+    fontWeight: '400',
     color: '#111827',
     maxWidth: 249,
   },
