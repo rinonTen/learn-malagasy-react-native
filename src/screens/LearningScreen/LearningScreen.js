@@ -1,5 +1,11 @@
 import React from 'react';
-import {StyleSheet, SafeAreaView, View, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  SafeAreaView,
+  View,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
 import {learningScreenManager} from '../../listManagers/LearningScreen';
 import ScreenHeader from './LeariningScreenHeader';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
@@ -16,6 +22,13 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     width: 365,
     paddingTop: 60,
+  },
+  headingCotainer: {display: 'flex', flexDirection: 'row', marginBottom: 10},
+  headingText: {
+    fontFamily: 'Inter',
+    fontSize: 18,
+    lineHeight: 22,
+    fontWeight: '400',
   },
 });
 
@@ -36,8 +49,9 @@ export default () => {
     <SafeAreaView>
       <View style={GlobalStyles.container}>
         <ScreenHeader />
-        <View>
-          <SectionHeading text={`Category: ${categoryName}`} />
+        <View style={style.headingCotainer}>
+          <SectionHeading text={`Category: `} />
+          <Text style={style.headingText}>{categoryName}</Text>
         </View>
         <View style={{marginBottom: 37}}>
           <SectionHeading text="The phrase" />
@@ -58,9 +72,9 @@ export default () => {
                     disabled={isListItemDisabled}
                     onPress={() => chooseAnswers(item, item?.id)}>
                     <ListItem
-                      categoryName={item?.name.en}
+                      categoryName={item?.name.mg}
                       onPress={() => chooseAnswers(item, item?.id)}
-                      text="Pick"
+                      text="Hifidy"
                       isCorrect={
                         isAnswerCorrect &&
                         phraseObjToDisplayInTextarea?.id === item?.id
