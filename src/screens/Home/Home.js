@@ -19,8 +19,8 @@ import {setCategoryId} from '../../actions';
 const styles = StyleSheet.create({
   phraseListItem: {
     backgroundColor: '#ffffff',
-    borderStartColor: '#E5E5E5',
-    borderEndColor: '#E5E5E5',
+    borderColor: '#E5E5E5',
+    borderStyle: 'solid',
     borderWidth: 1,
     borderRadius: 3,
   },
@@ -44,19 +44,22 @@ export default ({navigation}) => {
     navigation.navigate('LearningScreen');
   }
 
-  const PhrasesComponent = ({pharasesArr}) => {
+  const PhrasesComponent = ({pharasesArr, headingText}) => {
     return (
-      <TouchableOpacity style={styles.phraseListItem}>
-        <ListItem
-          categoryName={
-            isEnglishLanguage
-              ? `${pharasesArr.length} seen phrases`
-              : `teny sy fehezanteny ${pharasesArr.length}`
-          }
-          onPress={() => navigation.navigate('LearningScreen')}
-          text="Learn"
-        />
-      </TouchableOpacity>
+      <View style={styles.sectionContainer}>
+        <SectionHeading text={headingText} />
+        <TouchableOpacity style={styles.phraseListItem}>
+          <ListItem
+            categoryName={
+              isEnglishLanguage
+                ? `${pharasesArr.length} seen phrases`
+                : `teny sy fehezanteny ${pharasesArr.length}`
+            }
+            onPress={() => navigation.navigate('LearningScreen')}
+            text="Learn"
+          />
+        </TouchableOpacity>
+      </View>
     );
   };
 
@@ -90,26 +93,22 @@ export default ({navigation}) => {
               })}
           </List>
           {seenPhrases.length >= 1 && (
-            <View style={styles.sectionContainer}>
-              <SectionHeading
-                text={
-                  isEnglishLanguage ? 'Seen phrases' : 'Fehezanteny efa hita'
-                }
-              />
-              <PhrasesComponent pharasesArr={seenPhrases} />
-            </View>
+            <PhrasesComponent
+              pharasesArr={seenPhrases}
+              headingText={
+                isEnglishLanguage ? 'Seen phrases' : 'Fehezanteny efa hita'
+              }
+            />
           )}
           {learntPhrases.length >= 1 && (
-            <View style={styles.sectionContainer}>
-              <SectionHeading
-                text={
-                  isEnglishLanguage
-                    ? 'Learnt phrases'
-                    : 'Fehezanteny efa nianarana'
-                }
-              />
-              <PhrasesComponent pharasesArr={learntPhrases} />
-            </View>
+            <PhrasesComponent
+              pharasesArr={learntPhrases}
+              headingText={
+                isEnglishLanguage
+                  ? 'Learnt phrases'
+                  : 'Fehezanteny efa nianarana'
+              }
+            />
           )}
         </View>
       </ScrollView>

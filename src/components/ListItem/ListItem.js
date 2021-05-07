@@ -33,10 +33,9 @@ export default function ListItemComponent({
   text,
   isCorrect,
   isIncorrect,
-  ref,
 }) {
   return (
-    <SafeAreaView ref={ref} style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.text}>{categoryName}</Text>
       <View style={styles.buttonContainer}>
         <ActionButton
