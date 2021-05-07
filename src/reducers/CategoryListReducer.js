@@ -1,4 +1,4 @@
-import {CATEGORY_LIST} from '../constants';
+import {CATEGORY_LIST} from '../constants/ActionVariables';
 
 export const categoryList = (state = {}, action) => {
   switch (action.type) {

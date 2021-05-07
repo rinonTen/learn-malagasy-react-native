@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {useContext} from './GlobalListManager';
+import {globalListManager} from './GlobalListManager';
 import {useDispatch} from 'react-redux';
 import {setLearntPrases} from '../actions';
 
@@ -9,7 +9,7 @@ export const leariningScreenManager = () => {
     phrases,
     categoryName,
     setPhrasesToDisplayInLearningScreen,
-  } = useContext();
+  } = globalListManager();
 
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
   const [isAnswerIncorrect, setIsAnswerIncorrect] = useState(false);

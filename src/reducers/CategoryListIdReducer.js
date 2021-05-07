@@ -1,4 +1,4 @@
-import {SET_CATEGORYLIST_ID} from '../constants';
+import {SET_CATEGORYLIST_ID} from '../constants/ActionVariables';
 
 export const categoryListId = (state = '', action) => {
   switch (action.type) {
