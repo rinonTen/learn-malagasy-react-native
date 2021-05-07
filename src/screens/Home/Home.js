@@ -11,7 +11,7 @@ import HomeHeader from './HomeHeader';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import ListItem from '../../components/ListItem/ListItem';
 import GlobalStyles from '../../constants/GlobalStyles';
-import {useContext} from '../../context/globalContext';
+import {useContext} from '../../ListManagers/GlobalListManager';
 import {useDispatch} from 'react-redux';
 import {setCategoryId} from '../../actions';
 
