@@ -50,11 +50,10 @@ export default ({navigation}) => {
     showNextButton,
     chooseAnswers,
     handleNextButton,
+    isEnglishPrimaryLanguage,
+    setIsEnglishPrimaryLanguage,
   } = learningScreenManager();
 
-  const [isEnglishPrimaryLanguage, setIsEnglishPrimaryLanguage] = useState(
-    true,
-  );
   return (
     <SafeAreaView>
       <ScrollView>
