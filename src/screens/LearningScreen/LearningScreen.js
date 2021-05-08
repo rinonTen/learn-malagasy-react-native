@@ -39,7 +39,7 @@ const style = StyleSheet.create({
   },
 });
 
-export default () => {
+export default ({navigation}) => {
   const {
     phraseObjToDisplayInTextarea,
     categoryName,
@@ -55,12 +55,12 @@ export default () => {
   const [isEnglishPrimaryLanguage, setIsEnglishPrimaryLanguage] = useState(
     true,
   );
-  // console.log(categoryName.name.en);
   return (
     <SafeAreaView>
       <ScrollView>
         <View style={GlobalStyles.container}>
           <ScreenHeader
+            goBack={() => navigation.goBack()}
             switchLanguage={() =>
               setIsEnglishPrimaryLanguage(!isEnglishPrimaryLanguage)
             }
