@@ -14,7 +14,11 @@ import ListItem from '../../components/ListItem/ListItem';
 import GlobalStyles from '../../constants/GlobalStyles';
 import {globalListManager} from '../../listManagers/GlobalListManager';
 import {useDispatch} from 'react-redux';
-import {setCategoryId} from '../../actions';
+import {
+  setCategoryId,
+  setCategoryName,
+  setLearningScreenData,
+} from '../../actions';
 
 const styles = StyleSheet.create({
   phraseListItem: {
@@ -44,19 +48,34 @@ export default ({navigation}) => {
     navigation.navigate('LearningScreen');
   }
 
-  const PhrasesComponent = ({pharasesArr, headingText}) => {
+  // Handling onPress in learnt phrases item
+  function learntPhraseOnPress(learntPhrases) {
+    dispatch(setLearningScreenData(learntPhrases));
+    dispatch(
+      setCategoryName({
+        name: {
+          en: 'Learnt phrases',
+          mg: 'Fehezanteny efa nianarana',
+        },
+      }),
+    );
+    navigation.navigate('LearningScreen');
+  }
+
+  const PhrasesComponent = ({
+    listItemName,
+    headingText,
+    onPress = () => {},
+    isEnglishLanguage,
+  }) => {
     return (
       <View style={styles.sectionContainer}>
         <SectionHeading text={headingText} />
-        <TouchableOpacity style={styles.phraseListItem}>
+        <TouchableOpacity style={styles.phraseListItem} onPress={onPress}>
           <ListItem
-            categoryName={
-              isEnglishLanguage
-                ? `${pharasesArr.length} seen phrases`
-                : `teny sy fehezanteny ${pharasesArr.length}`
-            }
-            onPress={() => navigation.navigate('LearningScreen')}
-            text="Learn"
+            categoryName={listItemName}
+            onPress={onPress}
+            text={isEnglishLanguage ? 'Learn' : 'Hianatra'}
           />
         </TouchableOpacity>
       </View>
@@ -92,21 +111,29 @@ export default ({navigation}) => {
                 );
               })}
           </List>
-          {seenPhrases.length >= 1 && (
+          {/* {seenPhrases.length >= 1 && (
             <PhrasesComponent
               pharasesArr={seenPhrases}
+              onPress={() => navigation.navigate('LearningScreen')}
               headingText={
                 isEnglishLanguage ? 'Seen phrases' : 'Fehezanteny efa hita'
               }
             />
-          )}
+          )} */}
           {learntPhrases.length >= 1 && (
             <PhrasesComponent
               pharasesArr={learntPhrases}
+              onPress={() => learntPhraseOnPress(learntPhrases)}
+              isEnglishLanguage={isEnglishLanguage}
               headingText={
                 isEnglishLanguage
                   ? 'Learnt phrases'
                   : 'Fehezanteny efa nianarana'
+              }
+              listItemName={
+                isEnglishLanguage
+                  ? `${learntPhrases.length} learnt phrases`
+                  : `${learntPhrases.length} ny fehezanteny efa nianarana`
               }
             />
           )}

@@ -1,6 +1,9 @@
 import {
   CATEGORY_LIST,
   SET_CATEGORYLIST_ID,
+  CATEGORY_NAME,
+  LEARNING_SCREEN_DATA,
+  LEARNING_SCREEN_LEARNT_PRASES,
   SET_PHRASES,
   SEEN_PRASES,
   LEARNT_PHRASES,
@@ -27,6 +30,26 @@ function setPrases() {
     });
   };
 }
+function setCategoryName(category) {
+  return {
+    type: CATEGORY_NAME,
+    payload: category,
+  };
+}
+
+function setLearningScreenData(phrasesArr) {
+  return {
+    type: LEARNING_SCREEN_DATA,
+    payload: phrasesArr,
+  };
+}
+
+function learningScreenDataLearntPhrases(phrasesArr) {
+  return {
+    type: LEARNING_SCREEN_LEARNT_PRASES,
+    payload: phrasesArr,
+  };
+}
 
 function setSeenPrases(phrases) {
   return {
@@ -51,8 +74,11 @@ function setCategoryId(idFromCategory) {
 
 export {
   getCategoryList,
-  setSeenPrases,
-  setPrases,
   setCategoryId,
+  setCategoryName,
+  setPrases,
+  setLearningScreenData,
+  learningScreenDataLearntPhrases,
+  setSeenPrases,
   setLearntPrases,
 };
