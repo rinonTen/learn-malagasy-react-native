@@ -2,12 +2,7 @@ import {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {setCategoryName} from '../actions';
 
-import {
-  getCategoryList,
-  setPrases,
-  setLearningScreenData,
-  learningScreenDataLearntPhrases,
-} from '../actions';
+import {getCategoryList, setPrases, setLearningScreenData} from '../actions';
 import {shufflePhrasesArr} from './UtilsFuctions';
 
 // Global custom hook file
@@ -76,6 +71,19 @@ export const globalListManager = () => {
     setPhrasesToDisplayInLearningScreen(phrases);
   }, [phrases]);
 
+  // Setting data for the learnt phrases
+
+  function getLearntPhrases(learntPhrasesArr) {
+    const learntPhrasesArrShuffled = shufflePhrasesArr(learntPhrasesArr);
+    // Remove duplicates
+    const learntPhrasesDuplicatesRemoved = learntPhrasesArrShuffled.filter(
+      (phrase, index) => {
+        return learntPhrasesArrShuffled.indexOf(phrase) === index;
+      },
+    );
+    dispatch(setLearningScreenData(learntPhrasesDuplicatesRemoved));
+  }
+
   return {
     isEnglishLanguage,
     setIsEnglishLanguage,
@@ -89,5 +97,6 @@ export const globalListManager = () => {
     categoryName,
     categoryToDisplayId,
     setCategoryToDisplayId,
+    getLearntPhrases,
   };
 };

@@ -14,11 +14,7 @@ import ListItem from '../../components/ListItem/ListItem';
 import GlobalStyles from '../../constants/GlobalStyles';
 import {globalListManager} from '../../listManagers/GlobalListManager';
 import {useDispatch} from 'react-redux';
-import {
-  setCategoryId,
-  setCategoryName,
-  setLearningScreenData,
-} from '../../actions';
+import {setCategoryId, setCategoryName} from '../../actions';
 
 const styles = StyleSheet.create({
   phraseListItem: {
@@ -38,8 +34,8 @@ export default ({navigation}) => {
     isEnglishLanguage,
     setIsEnglishLanguage,
     categoryList,
-    seenPhrases,
     learntPhrases,
+    getLearntPhrases,
   } = globalListManager();
   const dispatch = useDispatch();
   // Setting the category id
@@ -50,7 +46,7 @@ export default ({navigation}) => {
 
   // Handling onPress in learnt phrases item
   function learntPhraseOnPress(learntPhrases) {
-    dispatch(setLearningScreenData(learntPhrases));
+    getLearntPhrases(learntPhrases);
     dispatch(
       setCategoryName({
         name: {
