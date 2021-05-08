@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {View} from 'react-native';
 import {storiesOf} from '@storybook/react-native';
-import PhraseTextarea from './phraseTextarea';
+import PhraseTextarea from './PhraseTextarea';
 
 function Edit() {
   const [text, setText] = React.useState('');
@@ -21,9 +21,7 @@ storiesOf('PhraseTextarea', module)
   ))
   .add('not editable and longer', () => (
     <PhraseTextarea
-      phrase={
-        'I wanna have dinner at 7pm today'
-      }
+      phrase={'I wanna have dinner at 7pm today'}
       editable={false}
     />
   ));

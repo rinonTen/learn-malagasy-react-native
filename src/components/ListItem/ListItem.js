@@ -11,24 +11,43 @@ const styles = StyleSheet.create({
     paddingBottom: 17,
     paddingLeft: 16,
     paddingRight: 16,
+    borderBottomColor: '#E5E5E5',
+    borderBottomWidth: 1,
+    borderStyle: 'solid',
   },
   text: {
     maxWidth: 249,
     fontSize: 16,
     lineHeight: 19,
+    fontWeight: '400',
     color: '#111827',
+    maxWidth: 249,
   },
   buttonContainer: {
     marginTop: 2,
   },
 });
 
-export default function ListItemComponent({categoryName, onPress = () => {}}) {
+export default function ListItemComponent({
+  categoryName,
+  onPress = () => {},
+  text,
+  isCorrect,
+  isIncorrect,
+  isEnglishPrimaryLanguage,
+}) {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>{categoryName}</Text>
       <View style={styles.buttonContainer}>
-        <ActionButton isDisabled={false} onPress={onPress} title="Learn" />
+        <ActionButton
+          isEnglishPrimaryLanguage={isEnglishPrimaryLanguage}
+          isCorrect={isCorrect}
+          isIncorrect={isIncorrect}
+          isDisabled={false}
+          onPress={onPress}
+          title={text}
+        />
       </View>
     </SafeAreaView>
   );
