@@ -33,6 +33,7 @@ export default function ActionButton({
   isCorrect,
   isIncorrect,
   isDisabled,
+  isEnglishPrimaryLanguage,
 }) {
   let buttonIcon;
   let textStyles;
@@ -41,11 +42,11 @@ export default function ActionButton({
   if (isCorrect) {
     buttonIcon = <CorrectAnswerIcon />;
     textStyles = [styles.greenText, styles.text];
-    buttonText = 'Correct';
+    buttonText = isEnglishPrimaryLanguage ? 'Marina' : 'Correct';
   } else if (isIncorrect) {
     buttonIcon = <WrongAnswerIcon />;
     textStyles = [styles.redText, styles.text];
-    buttonText = 'Wrong';
+    buttonText = isEnglishPrimaryLanguage ? 'Diso' : 'Wrong';
   } else {
     buttonIcon = <RightArrowIcon />;
     textStyles = [styles.blueText, styles.text];

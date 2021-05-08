@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -45,25 +45,44 @@ export default () => {
     handleNextButton,
   } = learningScreenManager();
 
+  const [isEnglishPrimaryLanguage, setIsEnglishPrimaryLanguage] = useState(
+    true,
+  );
+
   return (
     <SafeAreaView>
       <View style={GlobalStyles.container}>
-        <ScreenHeader />
+        <ScreenHeader
+          switchLanguage={() =>
+            setIsEnglishPrimaryLanguage(!isEnglishPrimaryLanguage)
+          }
+        />
         <View style={style.headingCotainer}>
-          <SectionHeading text={`Category: `} />
+          <SectionHeading
+            text={isEnglishPrimaryLanguage ? `Category: ` : `Sokajy: `}
+          />
           <Text style={style.headingText}>{categoryName}</Text>
         </View>
         <View style={{marginBottom: 37}}>
-          <SectionHeading text="The phrase" />
+          <SectionHeading
+            text={isEnglishPrimaryLanguage ? 'The phrases:' : 'Ny fehezanteny:'}
+          />
           <PhraseTextarea
             phrase={
               phraseObjToDisplayInTextarea &&
-              phraseObjToDisplayInTextarea.name?.en
+              (isEnglishPrimaryLanguage
+                ? phraseObjToDisplayInTextarea.name?.en
+                : phraseObjToDisplayInTextarea.name?.mg)
             }
             editable={false}
           />
         </View>
-        <List heading={'Select a category:'}>
+        <List
+          heading={
+            isEnglishPrimaryLanguage
+              ? 'Pick a solution:'
+              : 'Mifidiana valiny iray:'
+          }>
           {updatedPhrasesArrWithIncorrectPhrase &&
             updatedPhrasesArrWithIncorrectPhrase.map(item => {
               return (
@@ -72,9 +91,11 @@ export default () => {
                     disabled={isListItemDisabled}
                     onPress={() => chooseAnswers(item, item?.id)}>
                     <ListItem
-                      categoryName={item?.name.mg}
+                      categoryName={
+                        isEnglishPrimaryLanguage ? item?.name.mg : item?.name.en
+                      }
                       onPress={() => chooseAnswers(item, item?.id)}
-                      text="Hifidy"
+                      text={isEnglishPrimaryLanguage ? 'Hifidy' : 'Pick'}
                       isCorrect={
                         isAnswerCorrect &&
                         phraseObjToDisplayInTextarea?.id === item?.id

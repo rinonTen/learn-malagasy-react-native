@@ -85,7 +85,7 @@ export default ({navigation}) => {
                           isEnglishLanguage ? item?.name.en : item?.name.mg
                         }
                         onPress={() => handleListOnPress(item?.id)}
-                        text="Learn"
+                        text={isEnglishLanguage ? 'Learn' : 'Hianatra'}
                       />
                     </TouchableOpacity>
                   </React.Fragment>

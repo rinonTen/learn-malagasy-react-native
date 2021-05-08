@@ -34,12 +34,14 @@ export default function ListItemComponent({
   text,
   isCorrect,
   isIncorrect,
+  isEnglishPrimaryLanguage,
 }) {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>{categoryName}</Text>
       <View style={styles.buttonContainer}>
         <ActionButton
+          isEnglishPrimaryLanguage={isEnglishPrimaryLanguage}
           isCorrect={isCorrect}
           isIncorrect={isIncorrect}
           isDisabled={false}
