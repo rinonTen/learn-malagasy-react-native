@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {getCategoryList, setPrases} from '../actions';
-import {shufflePhrasesArr} from './UtilsFunctions';
+import {shufflePhrasesArr} from './UtilsFuctions';
 
 // Global custom hook file
 export const globalListManager = () => {
@@ -30,7 +30,7 @@ export const globalListManager = () => {
       !isLoading &&
       categoryList.categories.find(category => category.id === categoryListId);
     // For the category name in learning screen
-    setCategoryName(isEnglishLanguage ? category?.name.en : category?.name.ma);
+    setCategoryName(category);
   };
 
   function getPhrasesArrayFromCategoryList(phrasesArr) {
