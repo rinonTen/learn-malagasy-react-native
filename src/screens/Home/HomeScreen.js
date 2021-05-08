@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 
-import HomeHeader from './HomeHeader';
+import HomeHeader from './HomeScreenHeader';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import List from '../../components/List/List';
 import ListItem from '../../components/ListItem/ListItem';
