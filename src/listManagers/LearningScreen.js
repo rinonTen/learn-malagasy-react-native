@@ -20,6 +20,9 @@ export const learningScreenManager = () => {
     phraseObjToDisplayInTextarea,
     setphraseObjToDisplayInTextarea,
   ] = useState({});
+  const [isEnglishPrimaryLanguage, setIsEnglishPrimaryLanguage] = useState(
+    true,
+  );
 
   const dispatch = useDispatch();
 
@@ -90,5 +93,7 @@ export const learningScreenManager = () => {
     showNextButton,
     chooseAnswers,
     handleNextButton,
+    isEnglishPrimaryLanguage,
+    setIsEnglishPrimaryLanguage,
   };
 };
