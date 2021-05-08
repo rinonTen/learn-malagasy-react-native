@@ -91,8 +91,6 @@ export const globalListManager = () => {
     dispatch(setLearningScreenData(seenPhrasesDuplicatesRemoved));
   }
 
-  console.log(seenPhrases);
-
   return {
     isEnglishLanguage,
     setIsEnglishLanguage,
