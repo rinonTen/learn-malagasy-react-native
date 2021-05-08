@@ -111,15 +111,6 @@ export default ({navigation}) => {
                 );
               })}
           </List>
-          {/* {seenPhrases.length >= 1 && (
-            <PhrasesComponent
-              pharasesArr={seenPhrases}
-              onPress={() => navigation.navigate('LearningScreen')}
-              headingText={
-                isEnglishLanguage ? 'Seen phrases' : 'Fehezanteny efa hita'
-              }
-            />
-          )} */}
           {learntPhrases.length >= 1 && (
             <PhrasesComponent
               pharasesArr={learntPhrases}
