@@ -1,9 +1,13 @@
 import {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {setCategoryName} from '../actions';
-
-import {getCategoryList, setPrases, setLearningScreenData} from '../actions';
-import {shufflePhrasesArr} from './UtilsFuctions';
+import {
+  getCategoryList,
+  setPhrases,
+  setLearningScreenData,
+  setCategoryName,
+  setLearnPhrases,
+} from '../actions';
+import {shufflePhrasesArr, removeDuplicateItems} from './UtilsFuctions';
 
 // Global custom hook file
 export const globalListManager = () => {
@@ -23,7 +27,7 @@ export const globalListManager = () => {
 
   useEffect(() => {
     dispatch(getCategoryList());
-    dispatch(setPrases());
+    dispatch(setPhrases());
   }, []);
 
   const getPhraseForCategory = () => {
@@ -74,15 +78,20 @@ export const globalListManager = () => {
   // Setting data for the learnt phrases
 
   function getLearntPhrases(learntPhrasesArr) {
-    const learntPhrasesArrShuffled = shufflePhrasesArr(learntPhrasesArr);
     // Remove duplicates
-    const learntPhrasesDuplicatesRemoved = learntPhrasesArrShuffled.filter(
-      (phrase, index) => {
-        return learntPhrasesArrShuffled.indexOf(phrase) === index;
-      },
+    const learntPhrasesDuplicatesRemoved = removeDuplicateItems(
+      learntPhrasesArr,
     );
     dispatch(setLearningScreenData(learntPhrasesDuplicatesRemoved));
   }
+
+  function getSeenPhrases(seenPhrases) {
+    // Remove duplicates
+    const seenPhrasesDuplicatesRemoved = removeDuplicateItems(seenPhrases);
+    dispatch(setLearningScreenData(seenPhrasesDuplicatesRemoved));
+  }
+
+  console.log(seenPhrases);
 
   return {
     isEnglishLanguage,
@@ -91,6 +100,7 @@ export const globalListManager = () => {
     phrases,
     setPhrasesToDisplayInLearningScreen,
     seenPhrases,
+    setLearnPhrases,
     learntPhrases,
     randomPhraseAnswersArray,
     setCategoryName,
@@ -98,5 +108,6 @@ export const globalListManager = () => {
     categoryToDisplayId,
     setCategoryToDisplayId,
     getLearntPhrases,
+    getSeenPhrases,
   };
 };

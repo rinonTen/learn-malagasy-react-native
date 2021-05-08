@@ -5,7 +5,7 @@ import {
   LEARNING_SCREEN_DATA,
   LEARNING_SCREEN_LEARNT_PRASES,
   SET_PHRASES,
-  SEEN_PRASES,
+  SEEN_PHRASES,
   LEARNT_PHRASES,
 } from '../constants/ActionVariables';
 import CategoryListData from '../data/categories.json';
@@ -21,7 +21,7 @@ function getCategoryList() {
   };
 }
 
-function setPrases() {
+function setPhrases() {
   return async dispatch => {
     dispatch({
       type: SET_PHRASES,
@@ -51,14 +51,14 @@ function learningScreenDataLearntPhrases(phrasesArr) {
   };
 }
 
-function setSeenPrases(phrases) {
+function setSeenPhrases(phrases) {
   return {
-    type: SEEN_PRASES,
+    type: SEEN_PHRASES,
     payload: phrases,
   };
 }
 
-function setLearntPrases(phrases) {
+function setLearntPhrases(phrases) {
   return {
     type: LEARNT_PHRASES,
     payload: phrases,
@@ -76,9 +76,9 @@ export {
   getCategoryList,
   setCategoryId,
   setCategoryName,
-  setPrases,
+  setPhrases,
   setLearningScreenData,
   learningScreenDataLearntPhrases,
-  setSeenPrases,
-  setLearntPrases,
+  setSeenPhrases,
+  setLearntPhrases,
 };

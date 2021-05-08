@@ -6,14 +6,13 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-
+import {useDispatch} from 'react-redux';
 import HomeHeader from './HomeScreenHeader';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import List from '../../components/List/List';
 import ListItem from '../../components/ListItem/ListItem';
 import GlobalStyles from '../../constants/GlobalStyles';
 import {globalListManager} from '../../listManagers/GlobalListManager';
-import {useDispatch} from 'react-redux';
 import {setCategoryId, setCategoryName} from '../../actions';
 
 const styles = StyleSheet.create({
@@ -35,9 +34,13 @@ export default ({navigation}) => {
     setIsEnglishLanguage,
     categoryList,
     learntPhrases,
+    seenPhrases,
     getLearntPhrases,
+    getSeenPhrases,
   } = globalListManager();
+
   const dispatch = useDispatch();
+
   // Setting the category id
   function handleListOnPress(listId) {
     dispatch(setCategoryId(listId));
@@ -52,6 +55,20 @@ export default ({navigation}) => {
         name: {
           en: 'Learnt phrases',
           mg: 'Fehezanteny efa nianarana',
+        },
+      }),
+    );
+    navigation.navigate('LearningScreen');
+  }
+
+  // Handling onPress in Seen phrases item
+  function seenPhraseOnPress(seenPhrases) {
+    getSeenPhrases(seenPhrases);
+    dispatch(
+      setCategoryName({
+        name: {
+          en: 'Seen phrases',
+          mg: 'Fehezanteny efa hita',
         },
       }),
     );
@@ -107,6 +124,21 @@ export default ({navigation}) => {
                 );
               })}
           </List>
+          {seenPhrases.length >= 1 && (
+            <PhrasesComponent
+              pharasesArr={seenPhrases}
+              onPress={() => seenPhraseOnPress(seenPhrases)}
+              isEnglishLanguage={isEnglishLanguage}
+              headingText={
+                isEnglishLanguage ? 'Seen phrases' : 'Fehezanteny efa hita'
+              }
+              listItemName={
+                isEnglishLanguage
+                  ? `${seenPhrases.length} seen phrases`
+                  : `${seenPhrases.length} ny fehezanteny efa hita`
+              }
+            />
+          )}
           {learntPhrases.length >= 1 && (
             <PhrasesComponent
               pharasesArr={learntPhrases}

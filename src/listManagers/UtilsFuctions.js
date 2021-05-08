@@ -18,3 +18,11 @@ export function shufflePhrasesArr(array) {
   }
   return array;
 }
+
+export function removeDuplicateItems(arr) {
+  const arrShuffled = shufflePhrasesArr(arr);
+  // Remove duplicates
+  return arrShuffled.filter((phrase, index) => {
+    return arrShuffled.indexOf(phrase) === index;
+  });
+}
