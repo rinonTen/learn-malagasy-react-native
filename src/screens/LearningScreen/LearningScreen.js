@@ -39,7 +39,7 @@ const style = StyleSheet.create({
   },
 });
 
-export default () => {
+export default ({navigation}) => {
   const {
     phraseObjToDisplayInTextarea,
     categoryName,
@@ -59,6 +59,7 @@ export default () => {
       <ScrollView>
         <View style={GlobalStyles.container}>
           <ScreenHeader
+            goBack={() => navigation.goBack()}
             switchLanguage={() =>
               setIsEnglishPrimaryLanguage(!isEnglishPrimaryLanguage)
             }

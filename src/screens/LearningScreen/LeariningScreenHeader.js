@@ -17,14 +17,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ({switchLanguage = () => {}}) => {
+export default ({switchLanguage = () => {}, goBack = () => {}}) => {
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
-        <ToolButton
-          icon="arrowLeftIcon"
-          onPress={() => alert('You pressed tool button')}
-        />
+        <ToolButton icon="arrowLeftIcon" onPress={goBack} />
       </View>
       <View style={styles.buttonContainer}>
         <ToolButton
