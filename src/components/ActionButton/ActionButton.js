@@ -31,14 +31,14 @@ export default function ActionButton({
   title,
   onPress = () => {},
   isCorrect,
-  isIncorrect,
+  isIncorrect, // These should be combined
   isDisabled,
   isEnglishPrimaryLanguage,
 }) {
   let buttonIcon;
   let textStyles;
   let buttonText;
-
+  // think about how to do this without initialising empty variables as typescript won't let you do it (At least it does not want you to)
   if (isCorrect) {
     buttonIcon = <CorrectAnswerIcon />;
     textStyles = [styles.greenText, styles.text];

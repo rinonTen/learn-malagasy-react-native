@@ -4,7 +4,7 @@ import {getCategoryList, setPrases} from '../actions';
 import {shufflePhrasesArr} from './UtilsFuctions';
 
 // Global custom hook file
-export const globalListManager = () => {
+export const globalListManager = () => { // use the naming convention react wants you to use
   const [isEnglishLanguage, setIsEnglishLanguage] = useState(true);
   const [categoryToDisplayId, setCategoryToDisplayId] = useState(null);
   const [randomPhraseAnswersArray, setRandomPhraseAnswersArray] = useState([]);
@@ -37,7 +37,7 @@ export const globalListManager = () => {
     // FIltering the phrases by the categorylist id
     //  but removing the hash and the numbers in that id
     return (
-      phrasesArr &&
+      phrasesArr && // This check is not necessary
       phrasesArr.filter(cat =>
         cat.id.includes(categoryListId.slice(3, categoryListId.length - 3)),
       )
@@ -51,11 +51,11 @@ export const globalListManager = () => {
   function setPhrasesToDisplayInLearningScreen(phrases) {
     // Create an array of the answers from the phrases array and the random ID
     const phrasesArr = getPhrasesArrayFromCategoryList(phrases);
-    if (phrasesArr) {
+    if (phrasesArr) {// You will only have categories that exist so you don't need to complicate it with checks. If the data was really not there, crashing the app would be reasonable
       // A new phrases arr with its items disordered
       const shuffledPhrasesArray = shufflePhrasesArr(phrasesArr);
       // This array is used for data representation in learning screen
-      const phrasesArray = [
+      const phrasesArray = [ // Why? Why the second till 5th element? Why not with slice?
         shuffledPhrasesArray[1],
         shuffledPhrasesArray[2],
         shuffledPhrasesArray[3],

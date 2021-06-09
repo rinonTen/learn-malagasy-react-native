@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function NextButton({
+export default function NextButton({ // NextButton? the language params should be language-agnostic, e.g. primary/secondary language
   textForEnglish,
   textForMalagasy,
   onPress = () => null,

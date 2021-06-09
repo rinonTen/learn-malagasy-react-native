@@ -1,5 +1,5 @@
 // A function that shuffles arrays
-
+// nice use of util functions, make sure filename is spelled correctly 
 // Disordering the phrases array
 export function shufflePhrasesArr(array) {
   let ctr = array.length;

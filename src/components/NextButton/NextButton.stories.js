@@ -27,7 +27,7 @@ function EnabledWidthLongTextButton() {
     <NextButton
       isDisabled={false} 
       onPress={() => alert("You pressed next button")}
-      title="Resuffle"
+      title="Reshuffle"
     />
   );
 }

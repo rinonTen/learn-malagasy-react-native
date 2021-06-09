@@ -111,7 +111,7 @@ export default ({navigation}) => {
                         }
                         isEnglishPrimaryLanguage={isEnglishPrimaryLanguage}
                         onPress={() => chooseAnswers(item, item?.id)}
-                        text={isEnglishPrimaryLanguage ? 'Hifidy' : 'Pick'}
+                        text={isEnglishPrimaryLanguage ? 'Hifidy' : 'Pick' /* This should be the other way around */}
                         isCorrect={
                           isAnswerCorrect &&
                           phraseObjToDisplayInTextarea?.id === item?.id

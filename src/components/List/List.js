@@ -5,7 +5,7 @@ import ListItem from '../ListItem/ListItem';
 import SectionHeading from '../SectionHeading/SectionHeading';
 import GlobalStyles from '../../constants/GlobalStyles';
 
-export default function ListItemComponent({heading, children}) {
+export default function ListItemComponent({heading, children}) { // This does not seems to fit the version of the component used in the story. Why ListItemComponent over List as a name?
   return (
     <SafeAreaView>
       <SectionHeading text={heading} />

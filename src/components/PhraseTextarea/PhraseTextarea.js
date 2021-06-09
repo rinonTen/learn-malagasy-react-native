@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     lineHeight: 24.3,
   },
 });
-export default function PhraseTextarea({
+export default function PhraseTextarea({ // longer phrase not centered, editable text font size smaller
   phrase,
   editable,
   onChange = () => null,

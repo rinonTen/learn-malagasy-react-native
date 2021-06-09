@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   },
 
   icon: {
-    marginTop: 3,
+    marginTop: 3, // i feel like it's still not centered
   },
 });
 
@@ -36,6 +36,12 @@ export default function ToolButton({icon, onPress = () => null}) {
   } else if (icon === 'settingIcon') {
     buttonIcon = <SettingIcon style={{marginTop: -1}} />;
   }
+  // Object notation is easier: 
+  // style = {
+  //   'plusIcon': () =>  <ArrowLeftIcon style={{marginTop: 4}} />,
+  //   'arrowLeftIcon': () =>  <DoubleTickedIcon style={styles.icon} />,
+  //   ...
+  // }
 
   return (
     <SafeAreaView>

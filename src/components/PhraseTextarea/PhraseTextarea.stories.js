@@ -21,7 +21,7 @@ storiesOf('PhraseTextarea', module)
   ))
   .add('not editable and longer', () => (
     <PhraseTextarea
-      phrase={'I wanna have dinner at 7pm today'}
+      phrase={'I wanna have dinner at 7pm today fefe fefef feefe fefe'}
       editable={false}
     />
   ));

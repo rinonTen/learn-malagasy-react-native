@@ -43,10 +43,11 @@ export const learningScreenManager = () => {
         en: phrase.name.en,
         mg: phrase.name.mg,
       },
+      // Simplify this by just mapping phrase.isIncorrect = false, this will create it.
       isIncorrect: false,
     };
     return newPhrase;
-  });
+  }); 
 
   // Find the wrong answer from the array of answers and and 'isIncorrect' attribute
   const updatedPhrasesArrWithIncorrectPhrase = newPhrasesArr.map(phrase => {
@@ -55,7 +56,7 @@ export const learningScreenManager = () => {
       phrase.id !== phraseObjToDisplayInTextarea?.id
     ) {
       return {
-        ...phrase,
+        ...phrase, // See line 46
         isIncorrect: !phrase.isIncorrect,
       };
     }

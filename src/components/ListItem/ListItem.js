@@ -29,13 +29,14 @@ const styles = StyleSheet.create({
 });
 
 export default function ListItemComponent({
-  categoryName,
+  categoryName, // This name should be broader as there are more use-cases than just categories
   onPress = () => {},
-  text,
+  text, // make clear what this is for
   isCorrect,
   isIncorrect,
   isEnglishPrimaryLanguage,
-}) {
+}) // if you choose to make it multiline (which is fine for me), make the action button always in the center vertically
+ {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>{categoryName}</Text>
