@@ -1,4 +1,4 @@
-# learn-gasy
+# Learn-gasy - React Native application that helps users learn Malagasy or English
 
 
 # install
@@ -49,4 +49,4 @@ try
 ```
 chmod 755 android/gradlew 
 ```
-# learn-malagasy
+ 
