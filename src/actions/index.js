@@ -1,8 +1,11 @@
 import {
   CATEGORY_LIST,
   SET_CATEGORYLIST_ID,
+  CATEGORY_NAME,
+  LEARNING_SCREEN_DATA,
+  LEARNING_SCREEN_LEARNT_PRASES,
   SET_PHRASES,
-  SEEN_PRASES,
+  SEEN_PHRASES,
   LEARNT_PHRASES,
 } from '../constants/ActionVariables';
 import CategoryListData from '../data/categories.json';
@@ -18,7 +21,7 @@ function getCategoryList() {
   };
 }
 
-function setPrases() {
+function setPhrases() {
   return async dispatch => {
     dispatch({
       type: SET_PHRASES,
@@ -27,15 +30,35 @@ function setPrases() {
     });
   };
 }
-
-function setSeenPrases(phrases) {
+function setCategoryName(category) {
   return {
-    type: SEEN_PRASES,
+    type: CATEGORY_NAME,
+    payload: category,
+  };
+}
+
+function setLearningScreenData(phrasesArr) {
+  return {
+    type: LEARNING_SCREEN_DATA,
+    payload: phrasesArr,
+  };
+}
+
+function learningScreenDataLearntPhrases(phrasesArr) {
+  return {
+    type: LEARNING_SCREEN_LEARNT_PRASES,
+    payload: phrasesArr,
+  };
+}
+
+function setSeenPhrases(phrases) {
+  return {
+    type: SEEN_PHRASES,
     payload: phrases,
   };
 }
 
-function setLearntPrases(phrases) {
+function setLearntPhrases(phrases) {
   return {
     type: LEARNT_PHRASES,
     payload: phrases,
@@ -51,8 +74,11 @@ function setCategoryId(idFromCategory) {
 
 export {
   getCategoryList,
-  setSeenPrases,
-  setPrases,
   setCategoryId,
-  setLearntPrases,
+  setCategoryName,
+  setPhrases,
+  setLearningScreenData,
+  learningScreenDataLearntPhrases,
+  setSeenPhrases,
+  setLearntPhrases,
 };

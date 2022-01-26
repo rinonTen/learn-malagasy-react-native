@@ -1,41 +1,47 @@
 import {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {getCategoryList, setPrases} from '../actions';
-import {shufflePhrasesArr} from './UtilsFuctions';
+import {
+  getCategoryList,
+  setPhrases,
+  setLearningScreenData,
+  setCategoryName,
+  setLearnPhrases,
+} from '../actions';
+import {shufflePhrasesArr, removeDuplicateItems} from './UtilsFuctions';
 
 // Global custom hook file
 export const globalListManager = () => {
   const [isEnglishLanguage, setIsEnglishLanguage] = useState(true);
   const [categoryToDisplayId, setCategoryToDisplayId] = useState(null);
-  const [randomPhraseAnswersArray, setRandomPhraseAnswersArray] = useState([]);
-  const [categoryName, setCategoryName] = useState('');
   const dispatch = useDispatch();
   const categoryListState = useSelector(state => state.categoryList);
+  const categoryNameValue = useSelector(state => state.categoryName);
+  const {categoryName} = categoryNameValue;
   const seenPhrases = useSelector(state => state.seenPhrases);
   const learntPhrases = useSelector(state => state.learntPhrases);
   const phrasesState = useSelector(state => state.phrases);
   const categoryListId = useSelector(state => state.categoryListId);
+  const randomPhraseAnswersArray = useSelector(state => state.leaningSreenData);
   const {categoryList, isLoading} = categoryListState;
   const {phrases} = phrasesState;
 
   useEffect(() => {
     dispatch(getCategoryList());
-    dispatch(setPrases());
+    dispatch(setPhrases());
   }, []);
 
   const getPhraseForCategory = () => {
-    // Find the category obj by the id from the list item
+    // Find the category obj by the id from the list itemst item
     const category =
       categoryList &&
       !isLoading &&
       categoryList.categories.find(category => category.id === categoryListId);
     // For the category name in learning screen
-    setCategoryName(category);
+    dispatch(setCategoryName(category));
   };
 
   function getPhrasesArrayFromCategoryList(phrasesArr) {
-    // FIltering the phrases by the categorylist id
-    //  but removing the hash and the numbers in that id
+    // FIltering the phrases by the categorylist id but with the ### and numbers being removed and the numbers in that id
     return (
       phrasesArr &&
       phrasesArr.filter(cat =>
@@ -61,13 +67,29 @@ export const globalListManager = () => {
         shuffledPhrasesArray[3],
         shuffledPhrasesArray[4],
       ];
-      setRandomPhraseAnswersArray(phrasesArray);
+      dispatch(setLearningScreenData(phrasesArray));
     }
   }
 
   useEffect(() => {
     setPhrasesToDisplayInLearningScreen(phrases);
   }, [phrases]);
+
+  // Setting data for the learnt phrases
+
+  function getLearntPhrases(learntPhrasesArr) {
+    // Remove duplicates
+    const learntPhrasesDuplicatesRemoved = removeDuplicateItems(
+      learntPhrasesArr,
+    );
+    dispatch(setLearningScreenData(learntPhrasesDuplicatesRemoved));
+  }
+
+  function getSeenPhrases(seenPhrases) {
+    // Remove duplicates
+    const seenPhrasesDuplicatesRemoved = removeDuplicateItems(seenPhrases);
+    dispatch(setLearningScreenData(seenPhrasesDuplicatesRemoved));
+  }
 
   return {
     isEnglishLanguage,
@@ -76,10 +98,14 @@ export const globalListManager = () => {
     phrases,
     setPhrasesToDisplayInLearningScreen,
     seenPhrases,
+    setLearnPhrases,
     learntPhrases,
     randomPhraseAnswersArray,
+    setCategoryName,
     categoryName,
     categoryToDisplayId,
     setCategoryToDisplayId,
+    getLearntPhrases,
+    getSeenPhrases,
   };
 };

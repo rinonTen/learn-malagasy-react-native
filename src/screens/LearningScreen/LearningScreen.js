@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -70,8 +70,8 @@ export default ({navigation}) => {
             />
             <Text style={style.headingText}>
               {isEnglishPrimaryLanguage
-                ? categoryName.name?.en
-                : categoryName.name?.mg}
+                ? categoryName?.name?.en
+                : categoryName?.name?.mg}
             </Text>
           </View>
           <View style={{marginBottom: 37}}>

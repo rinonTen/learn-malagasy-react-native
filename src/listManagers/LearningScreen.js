@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {globalListManager} from './GlobalListManager';
 import {useDispatch} from 'react-redux';
-import {setLearntPrases} from '../actions';
+import {setLearntPhrases, setSeenPhrases} from '../actions';
 // Custom hook for learning screen
 export const learningScreenManager = () => {
   const {
@@ -63,12 +63,14 @@ export const learningScreenManager = () => {
   });
   // A function that handles choosing an answer and the behaviours of the buttons
   function chooseAnswers(phrase, itemId) {
+    // Add the phrase to seen phrases array
+    dispatch(setSeenPhrases(phraseObjToDisplayInTextarea));
     setItemId(itemId);
     if (phraseObjToDisplayInTextarea?.id === itemId) {
       setIsAnswerCorrect(true);
       setShowNextButton(!showNextButton);
       // Set the right phrase to the learnt phrases store
-      dispatch(setLearntPrases(phrase));
+      dispatch(setLearntPhrases(phrase));
     } else {
       setIsAnswerCorrect(true);
       setIsAnswerIncorrect(true);
